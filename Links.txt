@@ -1,9 +1,5 @@
-Link          : 
-Kısa Link     : 
-Whatsapp Link : 
-Zoom ID       : 
-
-
+Link          : https://www.dropbox.com/sh/fvh13xeypbes8ej/AACpwhO7Fwlh5gWf0oJ3LRXRa?dl=0
+Kısa Link     : http://bit.do/java-jan-2021
 
 İletişim Bilgileri:
 Oğuz Karan
