@@ -1,0 +1,12 @@
+Link          : https://www.dropbox.com/sh/fvh13xeypbes8ej/AACpwhO7Fwlh5gWf0oJ3LRXRa?dl=0
+Kısa Link     : http://bit.do/java-jan-2021
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> b2ad93311c951314ac5e7ed7450173e1cb2e9ef7
+
+İletişim Bilgileri:
+Oğuz Karan
+Email         : oguzkaran@csystem.org 
+Tel           : 05325158012
