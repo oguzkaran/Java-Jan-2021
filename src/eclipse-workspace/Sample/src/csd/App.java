@@ -1,28 +1,30 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Tür (type): Bir değişken için bellekte ne kadar yer ayrılacağını ve içerisindeki bilginin hangi formatta tutulacağınıu
-	belirten kavrama denir
 	
-	Temel Türler (built-in/primitive types)
-	Tür İsmi			Uzunluğu (byte)
-	short					2
-   *int						4
-	long					8
-	byte					1
-	
-	float					4
-   *double					8
-	
-	char 					2
-	boolean					-	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
-	{		
-		boolean a = false;
+	{
+		int x;
 		
-		System.out.println(ch);
+		x = Sample.foo() * 2;
+		
+		System.out.println(x);		
 	}
 }
+
+class Sample {
+	public static int foo()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());
+		
+		int square = val * val;
+		
+		return square;
+	}
+}
+
 
