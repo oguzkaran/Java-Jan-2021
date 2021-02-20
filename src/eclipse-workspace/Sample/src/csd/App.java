@@ -1,16 +1,13 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	
+	Geri dönüş değeri olan metotlar geri dönüş değeri yokmuş gibi çağrılabilir. Yani bir meotdun geri dönüş değerinin
+	bir işleme sokulması zorunluluğu yoktur. Şüphesiz metodun yaptığı işe göre bu anlamlı olabilir ya da olmayabilir 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{
-		int x;
-		
-		x = Sample.foo() * 2;
-		
-		System.out.println(x);		
+		Sample.foo();
 	}
 }
 
@@ -19,11 +16,12 @@ class Sample {
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		System.out.print("Bir sayı giriniz:");
-		int val = Integer.parseInt(kb.nextLine());
+		short val = Short.parseShort(kb.nextLine());		
+		int result = val * val;
 		
-		int square = val * val;
+		System.out.println(result);
 		
-		return square;
+		return result;													
 	}
 }
 
