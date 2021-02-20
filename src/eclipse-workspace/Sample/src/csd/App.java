@@ -1,28 +1,22 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Geri dönüş değeri olan metotlar geri dönüş değeri yokmuş gibi çağrılabilir. Yani bir meotdun geri dönüş değerinin
-	bir işleme sokulması zorunluluğu yoktur. Şüphesiz metodun yaptığı işe göre bu anlamlı olabilir ya da olmayabilir 
+	Java'da metot içerisinde metot bildirimi geçersizdir 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{
-		Sample.foo();
+		CalculateTotalApp.run();			
 	}
 }
 
-class Sample {
-	public static int foo()
+class CalculateTotalApp {
+	public static void run()
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("Bir sayı giriniz:");
-		short val = Short.parseShort(kb.nextLine());		
-		int result = val * val;
-		
-		System.out.println(result);
-		
-		return result;													
+		public static void foo() //error:
+		{
+			
+		}
 	}
-}
 
 
