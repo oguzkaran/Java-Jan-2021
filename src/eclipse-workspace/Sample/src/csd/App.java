@@ -1,23 +1,40 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden 3 basamaklı bir sayının basamakları toplamını döngü kullanmadan
-	döndüren digitsSum metodunu yazınız. Metot basamak sayısı kontrolü yapmayacaktır
+ 	Mantıksal AND ve OR operatörleri doğru sonuca yani kağıt üzerinde yapılacak olsa elde edilecek sonuca en kısa 
+ 	yoldan ulaşabilmek için (kısa devre davranışını kullanarak) en soldaki ifadeyi önce yaparlar. Yani derleyici 
+ 	bu şekilde kod üretir 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("3 basamklı bir sayı giriniz:");
-		int a = Integer.parseInt(kb.nextLine());
+		boolean result;
 		
-		System.out.printf("%d sayısının basamakları toplamı:%d%n", a, NumberUtil.digitsSum(a));			
+		result = Sample.tar() && Sample.bar() || Sample.foo();		
+			
+		System.out.println(result);		
 	}
 }
 
-class NumberUtil {
-	public static int digitsSum(int val)
-	{		
-		return Math.abs(val / 100 + val % 100 / 10 + val % 10);
+class Sample {
+	public static boolean foo()
+	{
+		System.out.println("foo");
+		
+		return true;
+	}
+	
+	public static boolean bar()
+	{
+		System.out.println("bar");
+		
+		return false;
+	}
+	
+	public static boolean tar()
+	{
+		System.out.println("tar");
+		
+		return false;
 	}
 }
