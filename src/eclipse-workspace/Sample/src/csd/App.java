@@ -1,40 +1,23 @@
 /*----------------------------------------------------------------------------------------------------------------------
- 	Mantıksal AND ve OR operatörleri doğru sonuca yani kağıt üzerinde yapılacak olsa elde edilecek sonuca en kısa 
- 	yoldan ulaşabilmek için (kısa devre davranışını kullanarak) en soldaki ifadeyi önce yaparlar. Yani derleyici 
- 	bu şekilde kod üretir 
+ 	Aşağıdaki koşullar ayrık olmadığından örnek için else-if yazımı programlama hatasıdır 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{
-		boolean result;
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());		
 		
-		result = Sample.tar() && Sample.bar() || Sample.foo();		
-			
-		System.out.println(result);		
+		if (val > 10)
+			System.out.println("val > 10");
+		if (val > 20)
+			System.out.println("val > 20");		
+				
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class Sample {
-	public static boolean foo()
-	{
-		System.out.println("foo");
-		
-		return true;
-	}
-	
-	public static boolean bar()
-	{
-		System.out.println("bar");
-		
-		return false;
-	}
-	
-	public static boolean tar()
-	{
-		System.out.println("tar");
-		
-		return false;
-	}
-}
+
+
