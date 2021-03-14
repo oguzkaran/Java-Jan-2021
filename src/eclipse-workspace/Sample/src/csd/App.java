@@ -1,49 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının tersini döndüren reversed isimli metodu yazınız
-	ve test ediniz. Örneğin sayı 123 ise metot 321 değerini döndürecektir
-	
-	123 -> 3 -> 3 * 10 + 2 = 32 -> 32 * 10 + 1 = 321
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyelinden büyük ilk Armstrong sayısını bulan
+	programı yazınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{		
-		ReversedTest.run();		
+		FactorialTest.run();	
 	}
 }
 
-
-class ReversedTest {
-	public static void run()
+class FactorialTest {
+	public static void run() 
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
+		int n = 14;
 		
-		while (true) {
-			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());			
-			int sum = NumberUtil.reversed(val);
-			
-			System.out.printf("%d sayısının tersi:%d%n", val, sum);
-			
-			if (val == 0)
-				return;
-		}
+		for (int i = -1; i <= n; ++i)
+			System.out.printf("%d! = %d%n", i, NumberUtil.factorial(i));
 	}
 }
 
-class NumberUtil {
-	public static int reversed(int val)
-	{	
-		int result = 0;
+class NumberUtil {	
+	public static int factorial(int n)
+	{		
+		int result = 1;
 		
-		while (val != 0) {
-			result = result * 10 + val % 10;
-			val /= 10;
-		}
+		for (; n >= 2; --n)
+			result *= n;
 		
-		return result;		
+		return result;
 	}
 }
-
-
