@@ -1,75 +1,22 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	 
+	break deyimi döngü deyimi ve switch deyimi dışında kullanılamaz 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{		
-		IsPrimePerformanceTestApp.run();	
+		for (int i = 0; i < 10; ++i)
+			Sample.foo(i);			
 	}
 }
 
-class IsPrimePerformanceTestApp {	
-	public static void run() 
+class Sample {
+	public static void foo(int i)
 	{
-		int val = 1_000_003;
+		if (i < 0)
+			break; //error
 		
-		System.out.println(NumberUtil.isPrime(val));
-		System.out.println(NumberUtil.isPrimeSlow(val));
+		System.out.printf("i = %d%n", i);		
 	}
 }
-
-
-class NumberUtil {	
-	public static boolean isPrime(int val)
-	{
-		if (val <= 1)
-			return false;
-		
-		if (val % 2 == 0)
-			return val == 2;
-		
-		if (val % 3 == 0)
-			return val == 3;
-		
-		if (val % 5 == 0)
-			return val == 5;
-		
-		if (val % 7 == 0)
-			return val == 7;
-		
-		int count = 0;
-		
-		for (int i = 11; i * i <= val; i += 2) {
-			++count;
-			if (val % i == 0)
-				return false;
-		}
-		
-		System.out.printf("isPrime:Count:%d%n", count);
-		
-		return true;
-	}
-	
-	public static boolean isPrimeSlow(int val)
-	{
-		if (val <= 1)
-			return false;
-		
-		int halfVal = val / 2;
-		
-		int count = 0;
-		
-		for (int i = 2; i <= halfVal; ++i) {
-			++count;
-			if (val % i == 0)
-				return false;
-		}		
-		
-		System.out.printf("isPrimeSlow:Count:%d%n", count);
-		
-		return true;
-	}
-}
-
