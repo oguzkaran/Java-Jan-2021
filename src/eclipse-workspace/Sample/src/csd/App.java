@@ -1,22 +1,54 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	İşlem öncesi otomatik tür dönüşümü için derleyici geçici değişken yaratılacak kodu üretir. Yani bu dönüşümler
-	geçici değişken yaratılarak yapılır. Derleyicinin aşağıdaki örnek için ürettiği kod yaklaşık şu şekilde yazılabilir:
-	int temp1 = a;
-	int temp2 = b;
-	c = temp1 + temp2;
+/*----------------------------------------------------------------------------------------------------------------------	
+	Homework-001-3. sorunun bir çözümü
+	(Ödevin verildiği zamanda bilinen konular ile yazılmıştır)
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{		
-		short a = 10;
-		char b = 'Z';		
-		int c;
-		
-		c = a + b;
-		
-		System.out.printf("c = %d%n", c);
+		SignumTest.run();	
 	}
 }
+
+class SignumTest {
+	public static void display(int a)
+	{
+		int result = NumberUtil.signum(a);
+		
+		if (result > 0)
+			System.out.println("Pozitif");
+		else if (result == 0)
+			System.out.println("Sıfır");
+		else
+			System.out.println("Negatif");
+	}
+	
+	public static void run() 
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in); 
+		
+		System.out.print("Bir sayı giriniz:");
+		int a = Integer.parseInt(kb.nextLine());		
+		
+		display(a);		
+	}
+}
+
+
+class NumberUtil {
+	public static int signum(int a)
+	{
+		if (a > 0)
+			return 1;
+		
+		if (a == 0)
+			return 0;
+		
+		return -1;
+	}
+}
+
+
+
 
