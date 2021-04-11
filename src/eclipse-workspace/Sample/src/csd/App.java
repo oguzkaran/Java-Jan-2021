@@ -1,32 +1,27 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	Sınıf türünden bellekte ayrılan bölgelere nesne (object) denir. Nesne ilgili sınıf türünden bir örnek olduğundan 
-	"instance" terimi de kullanılır. Java'da referans bildirimi nesnenin yaratıldığı anlamına gelmez. Nesneler 
-	stack'de yaratılmaz. Heap' de yaratılır. Nesne yaratılması new operatörü yapılır (şüphesiz akış new operatörüne
-	geldiğinde nesne yaratılacak kod üretilir.) new operatörü tek operandlı, önek durumunda bir operatördür. Ürettiği
-	değer heap'de yaratılan nesnenin adresidir(referansıdır.) new operatörünün genel biçimi:
-	
-		new <referans tür ismi>([argümanlar]);
-	Bir nesnenin adresi bir referansa atandığında artık o "referans ilgili nesneyi gösterir" duruma gelir.  
+	 Sınıfın static bir veri elemanına sınıf dışından referans ve nokta operatörü ile erişilebilir. Sınıf ismi ve
+	 nokta ile erişmekten bir farkı yoktur. Referans ile static veri elemanına erişim okunabilirlik açısından kesinlikle
+	 tercih edilmemelidir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
-	{
-		Sample s; 
-		Mample m;
+	{		
+		Sample s = new Sample();
+		System.out.printf("Sample.x = %d%n", Sample.x);
+		System.out.printf("Sample.y = %b%n", Sample.y);
 		
+		s.x = 20;
+		s.y = true;
 		
-		s = new Sample();
-		m = new Mample();
-		//...									
+		System.out.printf("Sample.x = %d%n", Sample.x);
+		System.out.printf("Sample.y = %b%n", Sample.y);
 	}
 }
 
 class Sample {
-	//...
-}
-
-class Mample {
+	public static int x;
+	public static boolean y;
 	//...
 }
