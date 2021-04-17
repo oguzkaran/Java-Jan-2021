@@ -1,27 +1,35 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	 Sınıfın static bir veri elemanına sınıf dışından referans ve nokta operatörü ile erişilebilir. Sınıf ismi ve
-	 nokta ile erişmekten bir farkı yoktur. Referans ile static veri elemanına erişim okunabilirlik açısından kesinlikle
-	 tercih edilmemelidir
+	 Aşağıdaki durumda doğrudan erişim olmadığından bir sorun oluşmaz
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
-	{		
-		Sample s = new Sample();
-		System.out.printf("Sample.x = %d%n", Sample.x);
-		System.out.printf("Sample.y = %b%n", Sample.y);
+	{	
+		Sample s;
 		
-		s.x = 20;
-		s.y = true;
 		
-		System.out.printf("Sample.x = %d%n", Sample.x);
-		System.out.printf("Sample.y = %b%n", Sample.y);
+		s = Sample.foo(67);
+		
+		System.out.printf("s.x = %d%n", s.x);
 	}
 }
 
+
 class Sample {
-	public static int x;
-	public static boolean y;
-	//...
+	public int x;
+	
+	public static Sample foo(int a)
+	{
+		Sample s = new Sample();
+		
+		s.x = a;
+		
+		return s;
+	}
+	
+	public void bar(int a)
+	{
+		x = a;
+	}
 }
