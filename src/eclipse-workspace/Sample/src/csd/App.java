@@ -1,35 +1,69 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	 Aşağıdaki durumda doğrudan erişim olmadığından bir sorun oluşmaz
+	 Point sınıfı ve test kodu
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
-	{	
-		Sample s;
+	{
+		Point p1, p2;
 		
+		p1 = new Point();
+		p2 = new Point();
 		
-		s = Sample.foo(67);
+		p1.x = 100;
+		p1.y = 200;
 		
-		System.out.printf("s.x = %d%n", s.x);
+		p2.x = 50;
+		p2.y = -45;
+		
+		p1.display();
+		p2.display();
+		
+		p1.offset(30);
+		p2.offset(10);
+		
+		System.out.println("---------------------");
+		
+		p1.display();
+		p2.display();		
 	}
 }
 
-
-class Sample {
+class Point {
 	public int x;
+	public int y;
 	
-	public static Sample foo(int a)
+	//...
+	
+	public double distance()
 	{
-		Sample s = new Sample();
-		
-		s.x = a;
-		
-		return s;
+		return distance(0, 0);				
 	}
 	
-	public void bar(int a)
+	public double distance(Point other)
 	{
-		x = a;
+		return distance(other.x, other.y);
+	}
+	
+	public double distance(int a, int b)
+	{
+		return Math.sqrt((x - a) * (x - a) + (y - b) * (y - b));
+	}
+	
+	public void offset(int dxy)
+	{
+		offset(dxy, dxy);
+	}
+	
+	public void offset(int dx, int dy)
+	{
+		x += dx;
+		y += dy;
+	}	
+	
+	public void display()
+	{
+		System.out.printf("{x: %d, y: %d}%n", x, y);
 	}
 }
