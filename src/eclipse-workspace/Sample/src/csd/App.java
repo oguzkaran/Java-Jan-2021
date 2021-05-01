@@ -1,41 +1,39 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	Sınıf Çalışması: Klavyeden elma girilene kadar alınan yazıların arasında klavyeden girilen bir yazı (ayraç) olacak 
-	şekilde birleştirilmiş bir String oluşturan programı yazınız
-	Örneğin: ankara, istanbul, izmir, zonguldak girildiğinde
-	ankara-istanbul-izmir-zonguldak
-	yazısı elde edilmelidir
+	String sınıfının compareToIgnoewCase metodu	 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{	
-		ConcatWithHyphenApp.run();		
+		CompareToTest.run();
 	}
 }
 
-class ConcatWithHyphenApp {
+class CompareToTest {	
 	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("Ayracı giriniz:");
-		String sep = kb.nextLine();		
-		String str = "";
+	{		
+		java.util.Scanner kb = new java.util.Scanner(System.in);		
 		
 		for (;;) {
-			System.out.print("Bir yazı giriniz:");
-			String s = kb.nextLine();
+			System.out.print("Birinci yazıyı giriniz:");
+			String s1 = kb.nextLine();
 			
-			if (s.trim().isEmpty())
-				continue;
+			if ("elma".equals(s1))
+				break;
 			
-			if ("elma".equals(s))
-				break;		
+			System.out.print("İkinci yazıyı giriniz:");
+			String s2 = kb.nextLine();
 			
-			str += s + sep;			
-		}	
+						
+			System.out.println("-------------------------------");
+			System.out.println(s1);			
+			System.out.println(s2);
+			System.out.println(s1.compareToIgnoreCase(s2));
+			System.out.println("-------------------------------");		
+		}
 		
-		str = str.substring(0, str.length() - sep.length());
-		System.out.println(str);
-	}
+		System.out.println("Tekrar yapıyor musunuz?");
+	}	
 }
+
