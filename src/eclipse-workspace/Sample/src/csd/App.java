@@ -1,42 +1,68 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	String sınıfının compareToIgnoewCase metodu	 
-	
-	adana
-	ankara ->
+	Sınıf Çalışması: Parametresi ile aldığı int türden n değeri için n tane rasgele belirlenmiş Türkçe karakterlerden
+	oluşan bir yazı döndüren getRandomTextTR ile  tane rasgele belirlenmiş İngilizce karakterlerden oluşan bir yazı 
+	döndüren getRandomTextEN isimli metotları yazınız ve test ediniz 		
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String[] args)
 	{	
-		CompareToTest.run();
+		GetRandomTextTest.run();
 	}
 }
 
-class CompareToTest {	
+class GetRandomTextTest {
 	public static void run()
-	{		
-		java.util.Scanner kb = new java.util.Scanner(System.in);		
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		java.util.Random r = new java.util.Random();
 		
 		for (;;) {
-			System.out.print("Birinci yazıyı giriniz:");
-			String s1 = kb.nextLine();
+			System.out.print("Bir sayı giriniz:");
+			int n = Integer.parseInt(kb.nextLine());
 			
-			if ("elma".equals(s1))
+			if (n <= 0)
 				break;
 			
-			System.out.print("İkinci yazıyı giriniz:");
-			String s2 = kb.nextLine();
-			
-						
-			System.out.println("-------------------------------");
-			System.out.println(s1);			
-			System.out.println(s2);
-			System.out.println(s1.compareToIgnoreCase(s2));
-			System.out.println("-------------------------------");		
-		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
-	}	
+			System.err.println("----------------------");
+			System.out.println(StringUtil.getRandomTextTR(r, n));						
+			System.out.println(StringUtil.getRandomTextEN(r, n));
+			System.out.println("----------------------");
+		}		
+	}
 }
+
+class StringUtil {
+	public static String getRandomTextTR(java.util.Random r, int n)
+	{
+		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+	}
+	
+	public static String getRandomTextTR(int n)
+	{		
+		return getRandomTextTR(new java.util.Random(), n);
+	}
+	
+	public static String getRandomTextEN(java.util.Random r, int n)
+	{
+		return getRandomText(r, n, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	}
+	
+	public static String getRandomTextEN(int n)
+	{
+		return getRandomTextEN(new java.util.Random(), n);
+	}
+	
+	public static String getRandomText(java.util.Random r, int n, String sourceText)
+	{
+		String str = "";
+		
+		for (int i = 0; i < n; ++i)			
+			str += sourceText.charAt(r.nextInt(sourceText.length()));
+					
+		return str;
+	}
+}
+
 
