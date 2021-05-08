@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/csd/App.java=UTF-8
+encoding//src/org/csystem/math/Complex.java=UTF-8
+encoding//src/org/csystem/math/geometry/Point.java=UTF-8
