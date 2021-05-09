@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/org/csystem/app/App.java=UTF-8
+encoding//src/org/csystem/app/samples/date/DateUtil.java=UTF-8
+encoding//src/org/csystem/app/samples/date/DateUtilTest.java=UTF-8
 encoding//src/org/csystem/math/Complex.java=UTF-8
 encoding//src/org/csystem/math/geometry/Point.java=UTF-8
+encoding//src/org/csystem/util/NumberUtil.java=UTF-8
+encoding//src/org/csystem/util/StringUtil.java=UTF-8
+encoding//src/test/Sample.java=UTF-8
