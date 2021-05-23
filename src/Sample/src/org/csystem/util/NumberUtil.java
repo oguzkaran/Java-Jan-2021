@@ -8,7 +8,33 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-public class NumberUtil {	
+public class NumberUtil {
+	public static int getIndexOfPrime(int n)
+	{
+		int i = 1;
+		int val = 2;
+
+		for (;;) {
+			if (val == n)
+				return i;
+
+			if (isPrime(val))
+				++i;
+
+			++val;
+		}
+	}
+
+	public static int calculateDigitalRoot(int val)
+	{
+		int root = Math.abs(val);
+
+		while (root > 9)
+			root = digitsSum(root);
+
+		return root;
+	}
+
 	public static int digitsCount(int val)
 	{		
 		return val == 0 ? 1 : (int)log10(abs(val)) + 1;
@@ -48,7 +74,19 @@ public class NumberUtil {
 		
 		return sum;
 	}
-	
+
+	public static int getDigitsFactorialSum(int n)
+	{
+		int sum = 0;
+
+		while (n != 0) {
+			sum += factorial(n % 10);
+			n /= 10;
+		}
+
+		return sum;
+	}
+
 	public static int getNextArmstrongNumber(int val)
 	{
 		int i;
@@ -98,25 +136,36 @@ public class NumberUtil {
 		return val >= 0 && getDigitsPowSum(val) == val;
 	}
 
-	public static boolean isDividedBy(int val, int n)
+	public static boolean isDecimalHarshad(int val)
 	{
-		return val % n == 0;
-	}
-
-	public static boolean isDividedBySix(int val)
-	{
-		return isDividedBy(val, 6);
-	}
-	
-
-	public static boolean isDividedByThree(int val)
-	{
-		return isDividedBy(val, 3);
+		return val > 0 && val % digitsSum(val) == 0;
 	}
 
 	public static boolean isEven(int val)
 	{
 		return val % 2 == 0;	
+	}
+
+	public static boolean isFactorian(int n)
+	{
+		return n > 0 && getDigitsFactorialSum(n) == n;
+	}
+
+	public static boolean isHardyRamanujan(int val)
+	{
+		if (val <= 0)
+			return false;
+
+		int count = 0;
+
+		for  (int x = 1; x * x * x < val; ++x)
+			for (int y = x + 1; x * x * x + y * y * y <= val; ++y)
+				if (x * x * x + y * y * y == val) {
+					++count;
+					++x;
+				}
+
+		return count >= 2;
 	}
 
 
@@ -149,6 +198,22 @@ public class NumberUtil {
 				return false;	
 		
 		return true;
+	}
+
+	public static boolean isPrimeX(int val)
+	{
+		int sum = val;
+		boolean result;
+
+		while ((result = isPrime(sum)) && sum > 9)
+			sum = digitsSum(sum);
+
+		return result;
+	}
+
+	public static boolean isSuperPrime(int val)
+	{
+		return isPrime(val) && isPrime(getIndexOfPrime(val));
 	}
 
 	public static int mid(int a, int b, int c)
