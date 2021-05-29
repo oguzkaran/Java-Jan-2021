@@ -25,6 +25,19 @@ public class NumberUtil {
 		}
 	}
 
+
+	public static int [] getDigits(int val)
+	{
+		val = Math.abs(val);
+
+		int [] digits = new int[val == 0 ? 1 : (int)log10(val) + 1];
+
+		for (int i = digits.length - 1; i >= 0; digits[i--] = val % 10, val /= 10)
+			;
+
+		return digits;
+	}
+
 	public static int calculateDigitalRoot(int val)
 	{
 		int root = Math.abs(val);
