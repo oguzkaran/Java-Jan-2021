@@ -1,42 +1,35 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Partition algoritması: Bir dizinin içerisinde bulunan elemanlardan belirli koşula uyanları (mantıksal) solda, uymayanları
-	sağda kalacak şekilde dizi üzerinde değişiklik yapmaktır. Bu algoritmada ikinci bir dizi kullanılmamalıdır.
-	AraryUtil sınıfınmızda partition metodu bir eşik değerinden küçük olanları dizinin solunda büyük veya eşit
-	olanları dizinin sağında toplayacak şekilde yazılmıştır
+    Referans dizileri:
+
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.ArrayUtil;
-
-import java.util.Random;
-import java.util.Scanner;
+import org.csystem.util.StringUtil;
 
 class App {
     public static void main(String[] args)
     {
-        PartitionTest.run();
+        GetRandomTextTest.run();
     }
 }
 
-class PartitionTest {
+class GetRandomTextTest {
     public static void run()
     {
-        Random r = new Random();
-        Scanner kb = new Scanner(System.in);
-        System.out.print("Bir sayı giriniz:");
-        int n = Integer.parseInt(kb.nextLine());
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+        java.util.Random r = new java.util.Random();
 
-        for (int i = 0; i < n; ++i) {
-            int [] a = ArrayUtil.getRandomArray(r, r.nextInt(20) + 1, 0, 100);
-            int threshold = r.nextInt(220) - 110;
-            System.out.println("--------------------------");
-            System.out.printf("Threshold:%d%n", threshold);
-            ArrayUtil.display(2, a);
-            int partitionIndex = ArrayUtil.partition(a, threshold);
-            System.out.printf("Partition point (index):%d%n", partitionIndex);
-            ArrayUtil.display(2, a);
-            System.out.println("--------------------------");
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n <= 0)
+                break;
+
+            System.out.println("----------------------");
+            System.out.println(StringUtil.getRandomTextTR(r, n));
+            System.out.println(StringUtil.getRandomTextEN(r, n));
+            System.out.println("----------------------");
         }
     }
 }
-

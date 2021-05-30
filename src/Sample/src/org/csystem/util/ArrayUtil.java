@@ -93,6 +93,20 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void drawHistogram(int [] data, int count, char ch)
+    {
+        int maxVal = max(data);
+
+        for (int i = 0; i < data.length; ++i) {
+            int n = (int)Math.ceil(data[i] * count / (double)maxVal);
+
+            while (n-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void fillRandomArray(int [] a, int min, int max) //[min, max)
     {
         fillRandomArray(new Random(), a, min, max);
@@ -103,6 +117,17 @@ public class ArrayUtil {
         for (int i = 0; i < a.length; ++i)
             a[i] = r.nextInt(max - min) + min;
     }
+
+    public static int [] getHistogramData(int [] a, int n) //[0, n]
+    {
+        int [] counts = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++counts[a[i]];
+
+        return counts;
+    }
+
 
     public static int [] getRandomArray(int n, int min, int max) //[min, max)
     {
@@ -171,6 +196,14 @@ public class ArrayUtil {
              swap(a, i, a.length - 1 - i);
     }
 
+    public static void reverse(char [] a)
+    {
+        int halfLength = a.length / 2;
+
+        for (int i = 0; i < halfLength; ++i)
+            swap(a, i, a.length - 1 - i);
+    }
+
     public static void selectionSort(int [] a, boolean desc)
     {
         if (desc)
@@ -187,6 +220,15 @@ public class ArrayUtil {
     public static void swap(int [] a, int i, int k)
     {
         int temp;
+
+        temp = a[i];
+        a[i] = a[k];
+        a[k] = temp;
+    }
+
+    public static void swap(char [] a, int i, int k)
+    {
+        char temp;
 
         temp = a[i];
         a[i] = a[k];

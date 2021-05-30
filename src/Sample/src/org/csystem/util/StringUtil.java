@@ -3,11 +3,9 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.util;
 
-import static java.lang.Character.isLetter;
-import static java.lang.Character.isWhitespace;
-import static java.lang.Character.toUpperCase;
-
 import java.util.Random;
+
+import static java.lang.Character.*;
 
 public class StringUtil {	
 	public static String capitalize(String s)
@@ -44,7 +42,6 @@ public class StringUtil {
 			--endIndex;
 		}
 		
-		
 		return maxStr;
 	}
 
@@ -70,12 +67,12 @@ public class StringUtil {
 	
 	public static String getRandomText(Random r, int n, String sourceText)
 	{
-		String str = "";
+		char [] c = new char[n];
 		
-		for (int i = 0; i < n; ++i)			
-			str += sourceText.charAt(r.nextInt(sourceText.length()));
+		for (int i = 0; i < n; ++i)
+			c[i] = sourceText.charAt(r.nextInt(sourceText.length()));
 					
-		return str;
+		return String.valueOf(c);
 	}
 	public static boolean isPangramTR(String text)
 	{
@@ -158,27 +155,27 @@ public class StringUtil {
 	
 	public static String removeWhitespaces(String s)
 	{
-		String str = "";
-		int length = s.length();		
-		
+		char [] c = new char[s.length()];
+		int index = 0;
+		int length = s.length();
+
 		for (int i = 0; i < length; ++i) {
 			char ch = s.charAt(i);
-			
+
 			if (!isWhitespace(ch))
-				str += ch;
+				c[index++] = ch;
 		}
-		
-		return str;		
+
+		return String.valueOf(c, 0, index);
 	}	
 
 	public static String reverse(String s)
 	{
-		String str = "";
-		
-		for (int i = s.length() - 1; i >= 0; --i)
-			str += s.charAt(i);
-		
-		return str;
+		char [] c = s.toCharArray();
+
+		ArrayUtil.reverse(c);
+
+		return String.valueOf(c);
 	}
 	
 	
@@ -203,5 +200,4 @@ public class StringUtil {
 		
 		return s.substring(0, i + 1);
 	}
-	
 }
