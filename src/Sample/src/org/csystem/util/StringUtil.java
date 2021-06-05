@@ -22,6 +22,23 @@ public class StringUtil {
 		
 		return count;
 	}
+
+	public static void display(String [] s)
+	{
+		for (int i = 0; i < s.length; ++i)
+			System.out.println(s[i]);
+	}
+
+	public static void fillRandomArrayTR(String [] s, int min, int max)
+	{
+		fillRandomArrayTR(new Random(), s, min, max);
+	}
+
+	public static void fillRandomArrayTR(Random r, String [] s, int min, int max)
+	{
+		for (int i = 0; i < s.length; ++i)
+			s[i] = StringUtil.getRandomTextTR(r, r.nextInt(max - min) + min);
+	}
 	
 	public static String getLongestPalindrome(String s)
 	{
@@ -43,6 +60,20 @@ public class StringUtil {
 		}
 		
 		return maxStr;
+	}
+
+	public static String [] getRandomArrayTR(int n, int min, int max)
+	{
+		return getRandomArrayTR(new Random(), n, min, max);
+	}
+
+	public static String [] getRandomArrayTR(Random r, int n, int min, int max)
+	{
+		String [] s = new String[n];
+
+		fillRandomArrayTR(r, s, min, max);
+
+		return s;
 	}
 
 	public static String getRandomTextTR(Random r, int n)
@@ -128,7 +159,22 @@ public class StringUtil {
 		
 		return true;
 	}
-	
+
+	public static String join(String [] s, char delimiter)
+	{
+		return join(s, delimiter + "");
+	}
+
+	public static String join(String [] s, String delimiter)
+	{
+		String str = "";
+
+		for (int i = 0; i < s.length; ++i)
+			str += s[i] + delimiter;
+
+		return str.substring(0, str.length() - delimiter.length());
+	}
+
 	public static String padLeading(String s, int length, char ch)
 	{
 		length -= s.length();

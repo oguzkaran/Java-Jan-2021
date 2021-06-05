@@ -1,35 +1,25 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Referans dizileri:
-
+	Sınıf Çalışması: Parametresi ile aldığı long türden bir sayının en fazla 3(üç) basamaklı ayrılmış sayılarından
+	oluşan int türden diziyi döndüren getDigitsInThrees metodunu NumberUtil sınıfı içerisinde yazınız ve test ediniz:
+	Örnek:
+	12345678 -> 12 345 678
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.util.StringUtil;
 
 class App {
     public static void main(String[] args)
     {
-        GetRandomTextTest.run();
-    }
-}
+        String str = "1@Oğuz Karan@10/09/1976@Matematik@78@100";
 
-class GetRandomTextTest {
-    public static void run()
-    {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
-        java.util.Random r = new java.util.Random();
+        String [] info = str.split("@");
 
-        for (;;) {
-            System.out.print("Bir sayı giriniz:");
-            int n = Integer.parseInt(kb.nextLine());
+        for (int i = 0; i < info.length; ++i)
+            System.out.println(info[i]);
 
-            if (n <= 0)
-                break;
+        double midtermGrade = Integer.parseInt(info[info.length - 2]);
+        double finalGrade = Integer.parseInt(info[info.length - 1]);
+        double grade = midtermGrade * 0.4 + finalGrade * 0.6;
 
-            System.out.println("----------------------");
-            System.out.println(StringUtil.getRandomTextTR(r, n));
-            System.out.println(StringUtil.getRandomTextEN(r, n));
-            System.out.println("----------------------");
-        }
+        System.out.println(grade > 50 ? "Geçti" : "Kaldı");
     }
 }

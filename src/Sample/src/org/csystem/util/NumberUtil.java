@@ -3,12 +3,52 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.util;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.log10;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 public class NumberUtil {
+	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+
+	public static int [] getDigits(long val, int p)
+	{
+		val = Math.abs(val);
+
+		int [] digits = new int[val == 0 ? 1 : (int)(log10(val) / p) + 1];
+		int powerOfTen = (int)pow(10, p);
+
+		for (int i = digits.length - 1; i >= 0; digits[i--] = (int)(val % powerOfTen), val /= powerOfTen)
+			;
+
+		return digits;
+	}
+
+	public static String numberToText3DigitsTR(int val)
+	{
+		if (val == 0)
+			return "sıfır";
+
+		String text = val < 0 ? "eksi" : "";
+
+		val = abs(val);
+		int a = val / 100;
+		int b = val / 10 % 10;
+		int c = val % 10;
+
+		if (a != 0) {
+			if (a != 1)
+				text += ones[a];
+			text += "yüz";
+		}
+
+		if (b != 0)
+			text += tens[b];
+
+		if (c != 0)
+			text += ones[c];
+
+		return text;
+	}
+
 	public static int getIndexOfPrime(int n)
 	{
 		int i = 1;
@@ -23,19 +63,6 @@ public class NumberUtil {
 
 			++val;
 		}
-	}
-
-
-	public static int [] getDigits(int val)
-	{
-		val = Math.abs(val);
-
-		int [] digits = new int[val == 0 ? 1 : (int)log10(val) + 1];
-
-		for (int i = digits.length - 1; i >= 0; digits[i--] = val % 10, val /= 10)
-			;
-
-		return digits;
 	}
 
 	public static int calculateDigitalRoot(int val)
@@ -73,6 +100,21 @@ public class NumberUtil {
 			result *= n;
 		
 		return result;
+	}
+
+	public static int [] getDigits(long val)
+	{
+		return getDigits(val, 1);
+	}
+
+	public static int [] getDigitsInTwos(long val)
+	{
+		return getDigits(val, 2);
+	}
+
+	public static int [] getDigitsInThrees(long val)
+	{
+		return getDigits(val, 3);
 	}
 
 	public static int getDigitsPowSum(int val)
@@ -238,6 +280,19 @@ public class NumberUtil {
 			return a;
 		
 		return c;
+	}
+
+	public static String numberToText(long val)
+	{
+		String text = val < 0 ? "eksi" : "";
+
+		int [] a = getDigitsInThrees(val);
+
+		//TODO:
+		for (int i = 0; i < a.length; ++i)
+			text += numberToText3DigitsTR(a[i]) + "??";
+
+		return text;
 	}
 
 	public static int reversed(int val)

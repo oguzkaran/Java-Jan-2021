@@ -2,6 +2,38 @@ package org.csystem.app.samples.date;
 
 public class DateUtil {
 	public static int [] daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	public static String [] daysOfWeekTR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+	public static String [] daysOfWeekEN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+	public static String [] monthsTR = {"",
+			"Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+			"Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+	};
+
+	public static String [] monthsEN = {"",
+			"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+	};
+
+	public static String getDaySuffix(int day)
+	{
+		String suffix = "th";
+
+		switch (day) {
+			case 1:
+			case 21:
+			case 31:
+				suffix = "st";
+				break;
+			case 2:
+			case 22:
+				suffix = "nd";
+				break;
+			case 3:
+			case 23:
+				suffix = "rd";
+		}
+
+		return suffix;
+	}
 
 	public static void displayDateTR(int day, int month, int year)
 	{
@@ -11,35 +43,30 @@ public class DateUtil {
 			System.out.println("Geçersiz tarih");
 			return;
 		}
-		
-		switch (dayOfWeek) {
-		case 0:
-			System.out.printf("%02d/%02d/%04d Pazar%n", day, month, year);
-			break;
-		case 1:
-			System.out.printf("%02d/%02d/%04d Pazartesi%n", day, month, year);
-			break;
-		case 2:
-			System.out.printf("%02d/%02d/%04d Salı%n", day, month, year);
-			break;
-		case 3:
-			System.out.printf("%02d/%02d/%04d Çarşamba%n", day, month, year);
-			break;
-		case 4:
-			System.out.printf("%02d/%02d/%04d Perşembe%n", day, month, year);
-			break;
-		case 5:
-			System.out.printf("%02d/%02d/%04d Cuma%n", day, month, year);
-			break;
-		case 6:
-			System.out.printf("%02d/%02d/%04d Cumartesi%n", day, month, year);
-			break;
-		}
+
+		System.out.printf("%d %s %d %s%n", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
 		
 		if (isWeekend(day, month, year))
-			System.out.println("Kurs var. Tekrar yaptınız m??");
+			System.out.println("Bugün Kurs var. Tekrar yaptınız mı?");
 		else
 			System.out.println("Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız!!!");
+	}
+
+	public static void displayDateEN(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+
+		if (dayOfWeek == -1) {
+			System.out.println("Invalid date");
+			return;
+		}
+
+		System.out.printf("%d%s %s %d %s%n", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
+
+		if (isWeekend(day, month, year))
+			System.out.println("Today is a course day. Did you review?");
+		else
+			System.out.println("Course day is comming. Do not forget to review!!!...");
 	}
 	
 	public static boolean isWeekend(int day, int month, int year)

@@ -12,7 +12,7 @@ package org.csystem.app.samples.date;
 
 import java.util.Scanner;
 
-public class DateUtilTest {
+public class DateUtilApp {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -31,6 +31,7 @@ public class DateUtilTest {
 			int year = Integer.parseInt(kb.nextLine());
 			
 			DateUtil.displayDateTR(day, month, year);
+			DateUtil.displayDateEN(day, month, year);
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");
