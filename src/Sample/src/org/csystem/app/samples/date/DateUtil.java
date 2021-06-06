@@ -44,7 +44,7 @@ public class DateUtil {
 			return;
 		}
 
-		System.out.printf("%d %s %d %s%n", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
+		System.out.println(getDateTR(day, month, year));
 		
 		if (isWeekend(day, month, year))
 			System.out.println("Bugün Kurs var. Tekrar yaptınız mı?");
@@ -61,7 +61,7 @@ public class DateUtil {
 			return;
 		}
 
-		System.out.printf("%d%s %s %d %s%n", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
+		System.out.println(getDateEN(day, month, year));
 
 		if (isWeekend(day, month, year))
 			System.out.println("Today is a course day. Did you review?");
@@ -80,7 +80,16 @@ public class DateUtil {
 	{
 		return !isWeekend(day, month, year);
 	}
-	
+
+	public static String getDateTR(int day, int month, int year)
+	{
+		return String.format("%d %s %d %s", day, monthsTR[month], year, getDayOfWeekTR(day, month, year));
+	}
+
+	public static String getDateEN(int day, int month, int year)
+	{
+		return String.format("%d%s %s %d %s", day, getDaySuffix(day), monthsEN[month], year, getDayOfWeekEN(day, month, year));
+	}
 	
 	public static int getDayOfWeek(int day, int month, int year)
 	{
@@ -94,7 +103,17 @@ public class DateUtil {
 		
 		return totalDays % 7;
 	}
-	
+
+	public static String getDayOfWeekTR(int day, int month, int year)
+	{
+		return daysOfWeekTR[getDayOfWeek(day, month, year)];
+	}
+
+	public static String getDayOfWeekEN(int day, int month, int year)
+	{
+		return daysOfWeekEN[getDayOfWeek(day, month, year)];
+	}
+
 	public static int getDayOfYear(int day, int month, int year)
 	{
 		if (!isValidDate(day, month, year))

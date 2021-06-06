@@ -1,4 +1,4 @@
-package org.csystem.samples.lottery;
+package org.csystem.app.samples.lottery;
 
 import java.util.Random;
 
