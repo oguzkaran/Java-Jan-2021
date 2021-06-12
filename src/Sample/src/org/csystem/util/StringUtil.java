@@ -25,8 +25,8 @@ public class StringUtil {
 
 	public static void display(String [] s)
 	{
-		for (int i = 0; i < s.length; ++i)
-			System.out.println(s[i]);
+		for (String str : s)
+			System.out.println(str);
 	}
 
 	public static void fillRandomArrayTR(String [] s, int min, int max)
@@ -169,8 +169,8 @@ public class StringUtil {
 	{
 		String str = "";
 
-		for (int i = 0; i < s.length; ++i)
-			str += s[i] + delimiter;
+		for (String sval : s)
+			str += sval + delimiter;
 
 		return str.substring(0, str.length() - delimiter.length());
 	}
@@ -239,8 +239,7 @@ public class StringUtil {
 	public static String trimTrailing(String s)
 	{
 		int i;
-		
-		
+
 		for (i = s.length() - 1; i >= 0 && isWhitespace(s.charAt(i)); --i)
 			;		
 		

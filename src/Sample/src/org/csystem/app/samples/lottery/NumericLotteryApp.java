@@ -17,8 +17,7 @@ public class NumericLotteryApp {
             if (n <= 0)
                 break;
 
-            for (int i = 0; i < n; ++i)
-                ArrayUtil.display(2, lottery.getNumbers());
+            ArrayUtil.display(2, lottery.getNumbers(n));
         }
     }
 }

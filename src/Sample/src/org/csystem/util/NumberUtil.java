@@ -289,8 +289,8 @@ public class NumberUtil {
 		int [] a = getDigitsInThrees(val);
 
 		//TODO:
-		for (int i = 0; i < a.length; ++i)
-			text += numberToText3DigitsTR(a[i]) + "??";
+		for (int value : a)
+			text += numberToText3DigitsTR(value) + "??";
 
 		return text;
 	}

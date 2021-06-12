@@ -83,22 +83,33 @@ public class ArrayUtil {
         display(1, a);
     }
 
+    public static void display(int [][] a)
+    {
+        display(1, a);
+    }
+
     public static void display(int n, int [] a)
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf(fmt, a[i]);
+        for (int val : a)
+            System.out.printf(fmt, val);
 
         System.out.println();
+    }
+
+    public static void display(int n, int [][] a)
+    {
+        for (int [] array : a)
+            display(n, array);
     }
 
     public static void drawHistogram(int [] data, int count, char ch)
     {
         int maxVal = max(data);
 
-        for (int i = 0; i < data.length; ++i) {
-            int n = (int)Math.ceil(data[i] * count / (double)maxVal);
+        for (int val : data) {
+            int n = (int)Math.ceil(val * count / (double)maxVal);
 
             while (n-- > 0)
                 System.out.print(ch);
@@ -118,16 +129,27 @@ public class ArrayUtil {
             a[i] = r.nextInt(max - min) + min;
     }
 
+    public static void fillRandomArray(int [][] a, int min, int max) //[min, max)
+    {
+        fillRandomArray(new Random(), a, min, max);
+    }
+
+    public static void fillRandomArray(Random r, int [][] a, int min, int max) //[min, max)
+    {
+        for (int i = 0; i < a.length; ++i)
+            for (int k = 0; k < a[i].length; ++k)
+                a[i][k] = r.nextInt(max - min) + min;
+    }
+
     public static int [] getHistogramData(int [] a, int n) //[0, n]
     {
         int [] counts = new int[n + 1];
 
-        for (int i = 0; i < a.length; ++i)
-            ++counts[a[i]];
+        for (int val : a)
+            ++counts[val];
 
         return counts;
     }
-
 
     public static int [] getRandomArray(int n, int min, int max) //[min, max)
     {
@@ -141,6 +163,46 @@ public class ArrayUtil {
         fillRandomArray(r, a, min, max);
 
         return a;
+    }
+
+    public static int [][] getRandomMatrix(int m, int n, int min, int max) //[min, max)
+    {
+        return getRandomMatrix(new Random(), m, n, min, max);
+    }
+
+    public static int [][] getRandomMatrix(Random r, int m, int n, int min, int max) //[min, max)
+    {
+        int [][] result = new int[m][n];
+
+        fillRandomArray(r, result, min, max);
+
+        return result;
+    }
+
+    public static int [][] getRandomSquareMatrix(int m, int min, int max) //[min, max)
+    {
+        return getRandomSquareMatrix(new Random(), m, min, max);
+    }
+
+    public static int [][] getRandomSquareMatrix(Random r, int m, int min, int max) //[min, max)
+    {
+        return getRandomMatrix(r, m, m, min, max);
+    }
+
+    public static boolean isMatrix(int [][] a)
+    {
+        int n = a[0].length;
+
+        for (int i = 1; i < a.length; ++i)
+            if (a[i].length != n)
+                return false;
+
+        return true;
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
+        return isMatrix(a) && a.length == a[0].length;
     }
 
     public static int min(int [] a)
@@ -239,9 +301,40 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += a[i];
+        for (int val : a)
+            total += val;
 
         return total;
+    }
+
+    public static int sum(int [][] a)
+    {
+        int total = 0;
+
+        for (int [] array : a)
+            total += sum(array);
+
+        return total;
+    }
+
+    public static int sumDiagonal(int [][] a)
+    {
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += a[i][i];
+
+        return total;
+    }
+
+    public static int [][] transpose(int [][] a)
+    {
+        int [][] t = new int[a[0].length][a.length];
+
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j)
+                t[j][i] = a[i][j];
+
+        return t;
     }
 }
