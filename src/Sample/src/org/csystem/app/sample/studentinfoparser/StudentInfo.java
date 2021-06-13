@@ -1,6 +1,6 @@
-package org.csystem.app.samples.studentinfoparser;
+package org.csystem.app.sample.studentinfoparser;
 
-import org.csystem.app.samples.date.DateUtil;
+import org.csystem.app.sample.date.DateUtil;
 
 public class StudentInfo {
     public String name;

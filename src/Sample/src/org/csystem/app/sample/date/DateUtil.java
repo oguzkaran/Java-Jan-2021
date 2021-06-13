@@ -1,4 +1,4 @@
-package org.csystem.app.samples.date;
+package org.csystem.app.sample.date;
 
 public class DateUtil {
 	public static int [] daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

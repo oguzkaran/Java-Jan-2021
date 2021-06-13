@@ -1,4 +1,4 @@
-package org.csystem.app.samples.lottery;
+package org.csystem.app.sample.lottery;
 
 import org.csystem.util.ArrayUtil;
 

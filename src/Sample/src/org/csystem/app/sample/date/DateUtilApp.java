@@ -8,7 +8,7 @@
 	-  01.01.1900'den önceki tarihler geçersiz kabul edilecektir
 	(İleride daha iyi şekilde yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
-package org.csystem.app.samples.date;
+package org.csystem.app.sample.date;
 
 import java.util.Scanner;
 

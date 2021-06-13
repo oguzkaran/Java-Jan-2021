@@ -39,6 +39,8 @@ public class StringUtil {
 		for (int i = 0; i < s.length; ++i)
 			s[i] = StringUtil.getRandomTextTR(r, r.nextInt(max - min) + min);
 	}
+
+
 	
 	public static String getLongestPalindrome(String s)
 	{
@@ -105,6 +107,34 @@ public class StringUtil {
 					
 		return String.valueOf(c);
 	}
+
+	public static int indexOf(String [] s, String str)
+	{
+		for (int i = 0; i < s.length; ++i)
+			if (s[i].equals(str))
+				return i;
+
+		return -1;
+	}
+
+	public static int indexOfStartsWith(String [] s, String str)
+	{
+		for (int i = 0; i < s.length; ++i)
+			if (s[i].startsWith(str))
+				return i;
+
+		return -1;
+	}
+
+	public static int indexOfEndsWith(String [] s, String str)
+	{
+		for (int i = 0; i < s.length; ++i)
+			if (s[i].endsWith(str))
+				return i;
+
+		return -1;
+	}
+
 	public static boolean isPangramTR(String text)
 	{
 		return isPangram(text.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");		
@@ -167,10 +197,20 @@ public class StringUtil {
 
 	public static String join(String [] s, String delimiter)
 	{
+		return join(s, 0, delimiter);
+	}
+
+	public static String join(String [] s, int startIndex, char delimiter)
+	{
+		return join(s, startIndex, delimiter + "");
+	}
+
+	public static String join(String [] s, int startIndex, String delimiter)
+	{
 		String str = "";
 
-		for (String sval : s)
-			str += sval + delimiter;
+		for (int i = startIndex; i < s.length; ++i)
+			str += s[i] + delimiter;
 
 		return str.substring(0, str.length() - delimiter.length());
 	}

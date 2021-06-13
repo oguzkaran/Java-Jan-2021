@@ -18,7 +18,7 @@
 
     Not: Uygulama şu ana kadar gördüklerimize göre yazılmıştır. İleride daha iyisi yazılacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
-package org.csystem.app.samples.studentinfoparser;
+package org.csystem.app.sample.studentinfoparser;
 
 public class StudentInfoParserApp {
     public static void run()

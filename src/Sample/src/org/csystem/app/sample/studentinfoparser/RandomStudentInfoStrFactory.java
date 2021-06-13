@@ -1,4 +1,4 @@
-package org.csystem.app.samples.studentinfoparser;
+package org.csystem.app.sample.studentinfoparser;
 
 import java.util.Random;
 
