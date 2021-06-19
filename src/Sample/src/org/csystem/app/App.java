@@ -1,13 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Anahtar Notlar: Programlamada isimlendirme için bazı stiller kullanılabilir. Çok kullanılan bazıları şunlardır:
-
-    1. Unix stili (snake case): Bu isimlendirmede karakterlerin tamamı küçük harfle yazılı ve birden fazla kelimeden
-    oluşan isimlerde araya alttire karakteri koyulur. Bu isimlendirme Java'da tercih edilmez.
-    Örnek: number_of_students, serial_port
-
-    2. Camel case (lower camel case):
-
-    3. Pascal case (upper camel case):
+    Aşağıdaki durumlardan en az biri varsa veri elemanının gizlenmesi gerekir:
+    
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -17,3 +10,53 @@ class App {
 
     }
 }
+
+class Device {
+    private String m_name;
+    private String m_host;
+    private int m_port;
+    private boolean m_open;
+
+    //...
+
+    public String getName()
+    {
+        return m_name;
+    }
+
+    public void setName(String name)
+    {
+        m_name = name;
+    }
+
+    public String getHost()
+    {
+        return m_host;
+    }
+
+    public void setHost(String host)
+    {
+        m_host = host;
+    }
+
+    public int getPort()
+    {
+        return m_port;
+    }
+
+    public void setPort(int port)
+    {
+        m_port = port;
+    }
+
+    public boolean isOpen()
+    {
+        return m_open;
+    }
+
+    public void setOpen(boolean open)
+    {
+        m_open = open;
+    }
+}
+
