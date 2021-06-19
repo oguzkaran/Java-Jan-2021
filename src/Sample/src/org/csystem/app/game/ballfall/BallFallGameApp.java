@@ -19,7 +19,7 @@ public class BallFallGameApp {
             int height = Integer.parseInt(kb.nextLine());
 
             ballFall.play(width, height);
-            String shape = ballFall.shape;
+            String shape = ballFall.getShape();
 
             System.out.println(shape);
         }

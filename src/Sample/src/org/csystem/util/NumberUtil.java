@@ -6,10 +6,10 @@ package org.csystem.util;
 import static java.lang.Math.*;
 
 public class NumberUtil {
-	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
-	public static int [] getDigits(long val, int p)
+	private static int [] getDigits(long val, int p)
 	{
 		val = Math.abs(val);
 
@@ -22,7 +22,7 @@ public class NumberUtil {
 		return digits;
 	}
 
-	public static String numberToText3DigitsTR(int val)
+	private static String numberToText3DigitsTR(int val)
 	{
 		if (val == 0)
 			return "sıfır";
@@ -36,15 +36,15 @@ public class NumberUtil {
 
 		if (a != 0) {
 			if (a != 1)
-				text += ones[a];
+				text += ms_ones[a];
 			text += "yüz";
 		}
 
 		if (b != 0)
-			text += tens[b];
+			text += ms_tens[b];
 
 		if (c != 0)
-			text += ones[c];
+			text += ms_ones[c];
 
 		return text;
 	}

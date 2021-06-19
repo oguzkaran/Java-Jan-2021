@@ -6,7 +6,7 @@
 
     Not: İlerde daha iyi şekilde yazılacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
-package org.csystem.app.simulation;
+package org.csystem.app.simulation.exam;
 
 public class ExamSimulationApp {
     public static void run()

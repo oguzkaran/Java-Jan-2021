@@ -8,22 +8,22 @@ import static java.lang.Math.sqrt;
 import static java.lang.String.format;
 
 public class Complex {
-	public static Complex add(double re1, double im1, double re2, double im2) //?leride gizlenecek
+	private static Complex add(double re1, double im1, double re2, double im2)
 	{
 		return new Complex(re1 + re2, im1 + im2);		
 	}
 		
-	public static Complex subtract(double re1, double im1, double re2, double im2) //?leride gizlenecek
+	private static Complex subtract(double re1, double im1, double re2, double im2)
 	{
 		return add(re1, im1, -re2, -im2);
 	}	
 	
-	public static Complex multiply(double re1, double im1, double re2, double im2) //?leride gizlenecek
+	private static Complex multiply(double re1, double im1, double re2, double im2)
 	{
 		return new Complex(re1 * re2 - im1 * im2, re1 * im2 + re2 * im1);
 	}	
 	
-	public static Complex divide(double re1, double im1, double re2, double im2) //?leride gizlenecek
+	private static Complex divide(double re1, double im1, double re2, double im2)
 	{
 		//TODO:
 		return new Complex();

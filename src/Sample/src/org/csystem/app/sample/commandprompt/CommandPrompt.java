@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------------------------------------------------------
+	CommandPrompt sınıfı
+----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.sample.commandprompt;
 
 import org.csystem.util.StringUtil;
@@ -5,11 +8,11 @@ import org.csystem.util.StringUtil;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    public String [] commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
-    public String prompt;
-    public Scanner kb = new Scanner(System.in);
+    private String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
+    private String m_prompt;
+    private Scanner m_kb = new Scanner(System.in);
 
-    public static void lengthProc(String [] cmdInfo)
+    private static void lengthProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
             System.out.println("length command must have at least one argument");
@@ -21,7 +24,7 @@ public class CommandPrompt {
         System.out.printf("Length without whitespaces:%d%n", args.length());
     }
 
-    public static void reverseProc(String [] cmdInfo)
+    private static void reverseProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
             System.out.println("reverse command must have at least one argument");
@@ -32,7 +35,7 @@ public class CommandPrompt {
         System.out.printf("Reverse with a space delimiter: %s%n", StringUtil.reverse(args));
     }
 
-    public static void upperProc(String [] cmdInfo)
+    private static void upperProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
             System.out.println("upper command must have at least one argument");
@@ -43,7 +46,7 @@ public class CommandPrompt {
         System.out.printf("Upper with a space delimiter: %s%n", args.toUpperCase());
     }
 
-    public static void lowerProc(String [] cmdInfo)
+    private static void lowerProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
             System.out.println("lower command must have at least one argument");
@@ -54,7 +57,7 @@ public class CommandPrompt {
         System.out.printf("Lower with a space delimiter: %s%n", args.toLowerCase());
     }
 
-    public static void quitProc(String [] cmdInfo)
+    private static void quitProc(String [] cmdInfo)
     {
         if (cmdInfo.length != 1) {
             System.out.println("quit command can not have any argument");
@@ -65,24 +68,22 @@ public class CommandPrompt {
         System.exit(0);
     }
 
-    public void changePromptProc(String [] cmdInfo)
+    private void changePromptProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
             System.out.print("Input a text:");
-            String p = kb.nextLine();
+            String p = m_kb.nextLine();
 
             if (!p.isBlank())
-                prompt = p.trim();
+                m_prompt = p.trim();
             else
                 System.out.println("Text must include at least one character without whitespace");
         }
         else
-            prompt = StringUtil.join(cmdInfo, 1, ' ');
+            m_prompt = StringUtil.join(cmdInfo, 1, ' ');
     }
 
-
-
-    public void parseCommand(String [] cmdInfo)
+    private void parseCommand(String [] cmdInfo)
     {
         if (cmdInfo.length == 1 && cmdInfo[0].equals(""))
             return;
@@ -92,17 +93,17 @@ public class CommandPrompt {
             return;
         }
 
-        int index = StringUtil.indexOfStartsWith(commands, cmdInfo[0]);
+        int index = StringUtil.indexOfStartsWith(m_commands, cmdInfo[0]);
 
         if (index != -1) {
-            cmdInfo[0] = commands[index];
+            cmdInfo[0] = m_commands[index];
             doWorkForCommand(cmdInfo);
         }
         else
             System.out.println("Invalid command");
     }
 
-    public void doWorkForCommand(String [] cmdInfo)
+    private void doWorkForCommand(String [] cmdInfo)
     {
         switch (cmdInfo[0]) {
             case "length":
@@ -128,14 +129,14 @@ public class CommandPrompt {
 
     public CommandPrompt(String p)
     {
-        prompt = p;
+        m_prompt = p;
     }
 
     public void run()
     {
         for (;;) {
-            System.out.print(prompt + ">");
-            String cmdText = kb.nextLine().trim();
+            System.out.print(m_prompt + ">");
+            String cmdText = m_kb.nextLine().trim();
 
             parseCommand(cmdText.split("[ \t]+"));
         }

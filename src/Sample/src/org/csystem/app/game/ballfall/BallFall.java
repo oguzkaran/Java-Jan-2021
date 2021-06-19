@@ -1,9 +1,9 @@
 package org.csystem.app.game.ballfall;
 
 public class BallFall {
-    public String shape;
+    private String m_shape;
 
-    public static boolean updateRightFlag(int ballIndex, boolean isRight, int width)
+    private static boolean updateRightFlag(int ballIndex, boolean isRight, int width)
     {
         if (ballIndex == 0)
             isRight = true;
@@ -13,7 +13,7 @@ public class BallFall {
         return isRight;
     }
 
-    public static int updateBallIndex(boolean isRight, int ballIndex)
+    private static int updateBallIndex(boolean isRight, int ballIndex)
     {
         if (isRight)
             ++ballIndex;
@@ -23,22 +23,27 @@ public class BallFall {
         return ballIndex;
     }
 
-    public void fillSpace(int begin, int end)
+    private void fillSpace(int begin, int end)
     {
         for (int i = begin; i < end; ++i)
-            shape += ' ';
+            m_shape += ' ';
     }
 
-    public void fillBall(int ballIndex, int end)
+    private void fillBall(int ballIndex, int end)
     {
         fillSpace(0, ballIndex);
-        shape += '*';
+        m_shape += '*';
         fillSpace(ballIndex + 1, end);
     }
 
     public BallFall()
     {
-        shape = "";
+        m_shape = "";
+    }
+
+    public String getShape()
+    {
+        return m_shape;
     }
 
     public void play(int width, int height)
@@ -46,14 +51,14 @@ public class BallFall {
         int ballIndex = 0;
         boolean isRight = true;
 
-        shape = "";
+        m_shape = "";
         for (int i = 1; i <= height; ++i) {
-            shape += '|';
+            m_shape += '|';
             fillBall(ballIndex, width);
             isRight = updateRightFlag(ballIndex, isRight, width);
             if (width != 1)
                 ballIndex = updateBallIndex(isRight, ballIndex);
-            shape += "|\r\n";
+            m_shape += "|\r\n";
         }
     }
 }
