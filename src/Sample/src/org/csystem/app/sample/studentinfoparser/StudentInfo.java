@@ -34,6 +34,13 @@ public class StudentInfo {
         return studentInfo;
     }
 
+    public String getName()
+    {
+        return m_name;
+    }
+
+    //...
+
     public double getGrade()
     {
         return m_midTermGrade * 0.4 + m_finalGrade * 0.6;

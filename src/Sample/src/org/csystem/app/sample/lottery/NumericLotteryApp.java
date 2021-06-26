@@ -5,6 +5,10 @@ import org.csystem.util.ArrayUtil;
 import java.util.Scanner;
 
 public class NumericLotteryApp {
+    private NumericLotteryApp()
+    {
+    }
+
     public static void run()
     {
         Scanner kb = new Scanner(System.in);

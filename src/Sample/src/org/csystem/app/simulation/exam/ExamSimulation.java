@@ -48,6 +48,26 @@ public class ExamSimulation {
         m_lectureName = name;
     }
 
+    public String getLectureName()
+    {
+        return m_lectureName;
+    }
+
+    public int getGrade(int i, int k)
+    {
+        return m_grades[i][k];
+    }
+
+    public double getAverage(int i)
+    {
+        return m_averages[i];
+    }
+
+    public double getAverage()
+    {
+        return m_average;
+    }
+
     public void run()
     {
         fillGrades();

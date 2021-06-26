@@ -49,6 +49,10 @@ public class NumberUtil {
 		return text;
 	}
 
+
+	private NumberUtil()
+	{
+	}
 	public static int getIndexOfPrime(int n)
 	{
 		int i = 1;

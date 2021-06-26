@@ -21,6 +21,10 @@
 package org.csystem.app.sample.studentinfoparser;
 
 public class StudentInfoParserApp {
+    private StudentInfoParserApp()
+    {
+    }
+
     public static void run()
     {
         RandomStudentInfoStrFactory factory = new RandomStudentInfoStrFactory();

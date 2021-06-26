@@ -7,7 +7,11 @@ import java.util.Random;
 
 import static java.lang.Character.*;
 
-public class StringUtil {	
+public class StringUtil {
+	private StringUtil()
+	{
+	}
+
 	public static String capitalize(String s)
 	{		
 		return s.isEmpty() ? s : toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();

@@ -54,6 +54,10 @@ public class ArrayUtil {
         }
     }
 
+    private ArrayUtil()
+    {
+    }
+
     public static void addBy(int [] a, int val)
     {
         for (int i = 0; i < a.length; ++i)

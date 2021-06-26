@@ -9,6 +9,10 @@
 package org.csystem.app.simulation.exam;
 
 public class ExamSimulationApp {
+    private ExamSimulationApp()
+    {
+    }
+
     public static void run()
     {
         ExamSimulation mathSimulation = new ExamSimulation("Matematik");
