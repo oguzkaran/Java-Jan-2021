@@ -8,9 +8,9 @@ import org.csystem.util.StringUtil;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    private String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
+    private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
+    private final Scanner m_kb = new Scanner(System.in);
     private String m_prompt;
-    private Scanner m_kb = new Scanner(System.in);
 
     private static void lengthProc(String [] cmdInfo)
     {

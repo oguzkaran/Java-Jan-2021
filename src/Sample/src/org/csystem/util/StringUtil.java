@@ -8,6 +8,11 @@ import java.util.Random;
 import static java.lang.Character.*;
 
 public class StringUtil {
+	private static final String ALPHABET_LOWER_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
+	private static final String ALPHABET_LOWER_EN = "abcdefghijklmnopqrstuvwxyz";
+	private static final String ALPHABET_ALL_TR = ALPHABET_LOWER_TR + "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+	private static final String ALPHABET_ALL_EN = ALPHABET_LOWER_EN + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 	private StringUtil()
 	{
 	}
@@ -84,7 +89,7 @@ public class StringUtil {
 
 	public static String getRandomTextTR(Random r, int n)
 	{
-		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+		return getRandomText(r, n, ALPHABET_ALL_TR);
 	}
 	
 	public static String getRandomTextTR(int n)
@@ -94,7 +99,7 @@ public class StringUtil {
 	
 	public static String getRandomTextEN(Random r, int n)
 	{
-		return getRandomText(r, n, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		return getRandomText(r, n, ALPHABET_ALL_EN);
 	}
 	
 	public static String getRandomTextEN(int n)
@@ -141,12 +146,12 @@ public class StringUtil {
 
 	public static boolean isPangramTR(String text)
 	{
-		return isPangram(text.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");		
+		return isPangram(text.toLowerCase(), ALPHABET_LOWER_TR);
 	}
 	
 	public static boolean isPangramEN(String text)
 	{
-		return isPangram(text.toLowerCase(), "abcdefghijklmnopqrstuvwxyz");
+		return isPangram(text.toLowerCase(), ALPHABET_LOWER_EN);
 	}
 	
 	public static boolean isPangram(String text, String alphabet)

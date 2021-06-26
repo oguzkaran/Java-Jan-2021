@@ -1,15 +1,15 @@
 package org.csystem.app.sample.date;
 
 public class DateUtil {
-	public static int [] daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	public static String [] daysOfWeekTR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
-	public static String [] daysOfWeekEN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-	public static String [] monthsTR = {"",
+	private static final int [] DAYS_OF_MONTHS = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private static final String [] DAYS_OF_WEEK_TR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+	private static final String [] DAYS_OF_WEEK_EN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+	private static final String [] MONTHS_TR = {"",
 			"Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
 			"Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
 	};
 
-	public static String [] monthsEN = {"",
+	private static final String [] MONTHS_EN = {"",
 			"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 	};
 
@@ -83,12 +83,12 @@ public class DateUtil {
 
 	public static String getDateTR(int day, int month, int year)
 	{
-		return String.format("%d %s %d %s", day, monthsTR[month], year, getDayOfWeekTR(day, month, year));
+		return String.format("%d %s %d %s", day, MONTHS_TR[month], year, getDayOfWeekTR(day, month, year));
 	}
 
 	public static String getDateEN(int day, int month, int year)
 	{
-		return String.format("%d%s %s %d %s", day, getDaySuffix(day), monthsEN[month], year, getDayOfWeekEN(day, month, year));
+		return String.format("%d%s %s %d %s", day, getDaySuffix(day), MONTHS_EN[month], year, getDayOfWeekEN(day, month, year));
 	}
 	
 	public static int getDayOfWeek(int day, int month, int year)
@@ -106,12 +106,12 @@ public class DateUtil {
 
 	public static String getDayOfWeekTR(int day, int month, int year)
 	{
-		return daysOfWeekTR[getDayOfWeek(day, month, year)];
+		return DAYS_OF_WEEK_TR[getDayOfWeek(day, month, year)];
 	}
 
 	public static String getDayOfWeekEN(int day, int month, int year)
 	{
-		return daysOfWeekEN[getDayOfWeek(day, month, year)];
+		return DAYS_OF_WEEK_EN[getDayOfWeek(day, month, year)];
 	}
 
 	public static int getDayOfYear(int day, int month, int year)
@@ -127,14 +127,14 @@ public class DateUtil {
 		int totalDays = 0;
 
 		for (int m = month - 1; m >= 1; --m )
-			totalDays += daysOfMonths[m];
+			totalDays += DAYS_OF_MONTHS[m];
 
 		return month > 2 && isLeapYear(year) ? totalDays + 1 : totalDays;
 	}
 	
 	public static int getDays(int month, int year)
 	{
-		return month == 2 && isLeapYear(year) ? 29 : daysOfMonths[month];
+		return month == 2 && isLeapYear(year) ? 29 : DAYS_OF_MONTHS[month];
 	}
 	
 	public static boolean isValidDate(int day, int month, int year)

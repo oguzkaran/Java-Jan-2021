@@ -6,7 +6,7 @@ public class RandomStudentInfoStrFactory {
     private String [] m_studentsInfo;
     private boolean [] m_flags;
     private int count;
-    private Random m_random;
+    private final Random m_random;
 
     public void init()
     {
