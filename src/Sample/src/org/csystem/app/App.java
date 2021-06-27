@@ -1,27 +1,24 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    LongValue sınıfı ve test kodu
-    Kullanım biçimine odaklanınız
+    Time sınıfı ve test kodu
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.wrapper.IntValue;
-import org.csystem.util.wrapper.LongValue;
-
-import java.util.Scanner;
+import org.csystem.util.datetime.Time;
 
 class App {
     public static void main(String[] args)
     {
-        Scanner kb = new Scanner(System.in);
+        Time time = new Time(5, 0, 23, 123);
 
-        System.out.print("Bir sayı giriniz:");
-        LongValue n = LongValue.of(Long.parseLong(kb.nextLine()));
-        LongValue result = LongValue.ZERO;
+        System.out.println(time.toShortTimeString());
+        System.out.println(time.toString());
+        System.out.println(time.toLongTimeString());
 
-        for (LongValue i = LongValue.ONE; i.compareTo(n) <= 0; i = i.increment())
-            result = result.add(i);
+        time.setMinute(0);
 
-        System.out.println(result.toString());
+        System.out.println(time.toShortTimeString());
+        System.out.println(time.toString());
+        System.out.println(time.toLongTimeString());
     }
 }
 
