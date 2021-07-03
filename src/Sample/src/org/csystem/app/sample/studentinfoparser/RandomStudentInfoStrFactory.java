@@ -34,6 +34,7 @@ public class RandomStudentInfoStrFactory {
     {
         if (count == m_studentsInfo.length)
             return "";
+
         int index;
 
         for (;;) {

@@ -1,24 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Time sınıfı ve test kodu
+    Fraction sınıfı ve test kodu
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.datetime.Time;
+import org.csystem.math.Fraction;
 
 class App {
     public static void main(String[] args)
     {
-        Time time = new Time(5, 0, 23, 123);
+        Fraction f = new Fraction();
 
-        System.out.println(time.toShortTimeString());
-        System.out.println(time.toString());
-        System.out.println(time.toLongTimeString());
+        System.out.println(f.toString());
 
-        time.setMinute(0);
+        f.setDenominator(0);
 
-        System.out.println(time.toShortTimeString());
-        System.out.println(time.toString());
-        System.out.println(time.toLongTimeString());
+        System.out.println(f.toString());
+
     }
 }
-

@@ -1,45 +1,84 @@
 package org.csystem.app.sample.studentinfoparser;
 
-import org.csystem.app.sample.date.DateUtil;
+import org.csystem.util.datetime.Date;
 
 public class StudentInfo {
     private String m_name;
-    private int m_day;
-    private int m_month;
-    private int m_year;
+    private final Date m_birthDate = new Date();
     private String m_lectureName;
     private int m_midTermGrade;
     private int m_finalGrade;
-
-    public static StudentInfo parse(String str)
-    {
-        String [] studentInfoStr = str.split("[:]+");
-
-        //... (format kontrolü)
-
-        String [] birthDateInfo = studentInfoStr[1].split("[/]");
-
-        //... (format kontrolü)
-
-        StudentInfo studentInfo = new StudentInfo();
-
-        studentInfo.m_day = Integer.parseInt(birthDateInfo[0]);
-        studentInfo.m_month = Integer.parseInt(birthDateInfo[1]);
-        studentInfo.m_year = Integer.parseInt(birthDateInfo[2]);
-        studentInfo.m_name = studentInfoStr[0];
-        studentInfo.m_lectureName = studentInfoStr[2];
-        studentInfo.m_midTermGrade = Integer.parseInt(studentInfoStr[3]);
-        studentInfo.m_finalGrade = Integer.parseInt(studentInfoStr[4]);
-
-        return studentInfo;
-    }
 
     public String getName()
     {
         return m_name;
     }
 
-    //...
+    public void setName(String name)
+    {
+        m_name = name;
+    }
+
+    public String getLectureName()
+    {
+        return m_lectureName;
+    }
+
+    public void setLectureName(String lectureName)
+    {
+        m_lectureName = lectureName;
+    }
+
+
+    public int getMidTermGrade()
+    {
+        return m_midTermGrade;
+    }
+
+    public void setMidTermGrade(int midTermGrade)
+    {
+        m_midTermGrade = midTermGrade;
+    }
+
+    public int getFinalGrade()
+    {
+        return m_finalGrade;
+    }
+
+    public void setFinalGrade(int finalGrade)
+    {
+        m_finalGrade = finalGrade;
+    }
+
+    public int getDay()
+    {
+        return m_birthDate.getDay();
+    }
+
+    public void setDay(int day)
+    {
+        m_birthDate.setDay(day);
+    }
+
+    public int getMonthValue()
+    {
+        return m_birthDate.getMonthValue();
+    }
+
+    public void setMonthValue(int month)
+    {
+        m_birthDate.setMonthValue(month);
+    }
+
+    public int getYear()
+    {
+        return m_birthDate.getYear();
+    }
+
+    public void setYear(int year)
+    {
+        m_birthDate.setYear(year);
+    }
 
     public double getGrade()
     {
@@ -48,12 +87,12 @@ public class StudentInfo {
 
     public String getBirthDateDayOfWeekTR()
     {
-        return DateUtil.getDayOfWeekTR(m_day, m_month, m_year);
+        return m_birthDate.getDayOfWeekTR();
     }
 
     public String getBirthDateInfoTR()
     {
-        return DateUtil.getDateTR(m_day, m_month, m_year);
+        return m_birthDate.toLongDateStringTR();
     }
 
     public String toString()
@@ -65,4 +104,3 @@ public class StudentInfo {
         return String.format(fmt, m_name, getBirthDateInfoTR(), m_lectureName, m_midTermGrade, m_finalGrade, Math.round(grade), status);
     }
 }
-

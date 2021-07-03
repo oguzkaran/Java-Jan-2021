@@ -3,6 +3,10 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.util.datetime;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
 public class Time {
     private int m_hour;
     private int m_minute;
@@ -76,7 +80,29 @@ public class Time {
             doWorkException(String.format("Invalid time value(s): h-> %d, m -> %d, s-> %d, ms -> %d",
                     hour, minute, second, millisecond));
     }
+
+    public static Time ofRandom()
+    {
+        return ofRandom(new Random());
+    }
+
+    public static Time ofRandom(Random r)
+    {
+        return new Time(r.nextInt(24), r.nextInt(60), r.nextInt(60), r.nextInt(1000));
+    }
+
     //...
+
+    public Time() //Bu ctor o anki sistem zamanını alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
+    {
+        Calendar now = new GregorianCalendar();
+
+        m_hour = now.get(Calendar.HOUR_OF_DAY);
+        m_minute = now.get(Calendar.MINUTE);
+        m_second = now.get(Calendar.SECOND);
+        m_millisecond = now.get(Calendar.MILLISECOND);
+    }
+
     public Time(int hour, int minute, int second, int millisecond)
     {
         checkForTime(hour, minute, second, millisecond);
