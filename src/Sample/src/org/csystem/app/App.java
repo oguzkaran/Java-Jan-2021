@@ -1,20 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Fraction sınıfı ve test kodu
+    enum türünün ordinal isimli non-static metodu referansa ilişkin nesnenin adresini tutan enum sabitinin
+    sıra numarasını döndürür. Ordinal numarası sıfırdan başlar. enum türünün toString metodu vardır ve sabitin
+    yazı karşılığını döndürür. enum türünün values static metodu ile enum sabitlerine ilişkin dizinin bir
+    kopyası elde edilebilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.math.Fraction;
 
 class App {
     public static void main(String[] args)
     {
-        Fraction f = new Fraction();
+        DayOfWeek dayOfWeek = DayOfWeek.WED;
 
-        System.out.println(f.toString());
+        System.out.printf("Ordinal:%d%n", dayOfWeek.ordinal());
+        System.out.println(dayOfWeek.toString());
 
-        f.setDenominator(0);
+        System.out.println("--------------------------");
+        for (DayOfWeek dow : DayOfWeek.values())
+            System.out.println(dow.toString());
 
-        System.out.println(f.toString());
+        System.out.println("--------------------------");
 
+        int ordinal = 4;
+
+        dayOfWeek = DayOfWeek.values()[ordinal];
+
+        System.out.println(dayOfWeek.toString());
     }
 }
+
+enum DayOfWeek {
+    SUN, MON, TUE, WED, THU, FRI, SAT
+}
+
