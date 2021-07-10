@@ -9,18 +9,18 @@ public enum Month {
         m_days = days;
     }
 
+    static boolean isLeapYear(int year)
+    {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+
     int getDays(int year)
     {
         return ordinal() == 1 && isLeapYear(year) ? 29 : m_days;
     }
+
     int getDays()
     {
         return m_days;
-
-    }
-
-    static boolean isLeapYear(int year)
-    {
-        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 }

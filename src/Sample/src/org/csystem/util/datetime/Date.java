@@ -17,6 +17,7 @@ public class Date {
     private static final String [] MONTHS_EN = {"",
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     };
+    private final static Month [] MONTHS = Month.values();
 
     private int m_day;
     private int m_month;
@@ -75,7 +76,7 @@ public class Date {
         int totalDays = 0;
 
         for (int m = month - 1; m >= 1; --m )
-            totalDays += Month.values()[m - 1].getDays();
+            totalDays += MONTHS[m - 1].getDays();
 
         return month > 2 && Month.isLeapYear(year) ? totalDays + 1 : totalDays;
     }
@@ -85,7 +86,7 @@ public class Date {
         if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900)
             return false;
 
-        return day <= Month.values()[month - 1].getDays(year);
+        return day <= MONTHS[month - 1].getDays(year);
     }
 
     private static void doWorkForException(String messsage)
@@ -152,7 +153,7 @@ public class Date {
     {
         int year = r.nextInt(maxYear - minYear + 1) + minYear;
         int month = r.nextInt(12) + 1;
-        int day = r.nextInt(Month.values()[month - 1].getDays( year)) + 1;
+        int day = r.nextInt(MONTHS[month - 1].getDays( year)) + 1;
 
         return new Date(day, month, year);
     }
@@ -214,7 +215,12 @@ public class Date {
 
     public Month getMonth()
     {
-        return Month.values()[m_month - 1];
+        return MONTHS[m_month - 1];
+    }
+
+    public void setMonth(Month month)
+    {
+        setMonthValue(month.ordinal() + 1);
     }
 
     public int getYear()
@@ -231,10 +237,7 @@ public class Date {
         set(m_day, m_month, year);
     }
 
-    public int getDayOfWeekValue()
-    {
-        return m_dayOfWeek;
-    }
+    public DayOfWeek getDayOfWeek() {return DayOfWeek.values()[m_dayOfWeek];}
 
     public String getDayOfWeekTR()
     {
