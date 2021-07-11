@@ -81,6 +81,14 @@ public class Time {
                     hour, minute, second, millisecond));
     }
 
+    private void set(int hour, int minute, int second, int millisecond)
+    {
+        m_hour = hour;
+        m_minute = minute;
+        m_second = second;
+        m_millisecond = millisecond;
+    }
+
     public static Time ofRandom()
     {
         return ofRandom(new Random());
@@ -92,6 +100,11 @@ public class Time {
     }
 
     //...
+
+    Time(Time time)
+    {
+       set(time.m_hour, time.m_minute, time.m_second, time.m_millisecond);
+    }
 
     public Time() //Bu ctor o anki sistem zamanını alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
     {
@@ -106,10 +119,7 @@ public class Time {
     public Time(int hour, int minute, int second, int millisecond)
     {
         checkForTime(hour, minute, second, millisecond);
-        m_hour = hour;
-        m_minute = minute;
-        m_second = second;
-        m_millisecond = millisecond;
+        set(hour, minute, second, millisecond);
     }
 
     public int getHour()

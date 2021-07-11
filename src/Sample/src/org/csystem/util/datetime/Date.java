@@ -158,6 +158,11 @@ public class Date {
         return new Date(day, month, year);
     }
 
+    Date(Date date)
+    {
+        set(date.m_day, date.m_month, date.m_year);
+    }
+
     public Date() //Bu ctor o anki sistem tarihini alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
     {
         Calendar today = new GregorianCalendar();

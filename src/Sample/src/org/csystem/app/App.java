@@ -1,122 +1,44 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Car, Plane ve Engine sınnıfları arasındaki ilişkiler
+    Bir dizi türetme durumu
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
     public static void main(String[] args)
     {
-        Car car = new Car(/*...*/);
-        Plane plane = new Plane(4/*...*/);
+        C c = new C();
 
-        car.run();
-        System.out.println("-------------------------");
-        plane.fly();
+        c.foo();
+        c.bar();
+        c.tar();
+        c.zar();
     }
 }
 
-class Plane {
-    private Engine [] m_engines;
-
-    private void startEngines()
+class C extends B {
+    public void zar()
     {
-        for (Engine engine : m_engines)
-            engine.startEngine();
-    }
-
-    private void accelerateEngines()
-    {
-        for (Engine engine : m_engines)
-            engine.accelerateEngine();
-    }
-
-    private void slowEngines()
-    {
-        for (Engine engine : m_engines)
-            engine.slowEngine();
-    }
-
-    private void stopEngines()
-    {
-        for (Engine engine : m_engines)
-            engine.stopEngine();
-    }
-
-    //...
-
-    public Plane(int n/*...*/)
-    {
-        m_engines = new Engine[n];
-
-        for (int i = 0; i < n; ++i)
-            m_engines[i] = new Engine(/*...*/);
-    }
-
-    //...
-
-    public void fly()
-    {
-        startEngines();
-        accelerateEngines();
-        System.out.println("flying");
-        slowEngines();
-        //...
-        stopEngines();
+        System.out.println("C.zar");
     }
 }
 
-class Car {
-    private Engine m_engine;
-
-    public Car(/*...*/)
+class B extends A {
+    public void tar()
     {
-        //...
-        m_engine = new Engine(/*...*/);
-        //...
-    }
-
-    //...
-
-    public void brake()
-    {
-        System.out.println("Car.brake");
-        m_engine.slowEngine();
-    }
-
-    public void run()
-    {
-        m_engine.startEngine();
-        m_engine.accelerateEngine();
-
-        //....
-        System.out.println("Running");
-
-        brake();
-        m_engine.stopEngine();
+        System.out.println("B.tar");
     }
 }
 
-class Engine {
-    //...
-    public void startEngine()
+class A {
+    public void foo()
     {
-        System.out.println("Start engine");
+        System.out.println("A.foo");
     }
 
-    public void accelerateEngine()
+    public void bar()
     {
-        System.out.println("Accelerate engine");
+        System.out.println("A.bar");
     }
-
-    public void slowEngine()
-    {
-        System.out.println("Slow engine");
-    }
-
-    public void stopEngine()
-    {
-        System.out.println("Stop engine");
-    }
-
-    //...
 }
+
+
