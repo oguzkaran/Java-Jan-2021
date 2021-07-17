@@ -1,44 +1,38 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Bir dizi türetme durumu
+    this ve super ctor sentaksı aynı anda bulunamazlar. Böyle bir durumla karşılaşan programcu yazdığı koda ve tasarımına
+    bakmalıdır. Çünkü doğru bir tasarım (yaklaşım) ve kodlama programcıyı bu şekilde bir kullanıma zaten getirmez
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
     public static void main(String[] args)
     {
-        C c = new C();
-
-        c.foo();
-        c.bar();
-        c.tar();
-        c.zar();
-    }
-}
-
-class C extends B {
-    public void zar()
-    {
-        System.out.println("C.zar");
+        new A(10);
     }
 }
 
 class B extends A {
-    public void tar()
+    public B()
     {
-        System.out.println("B.tar");
+        System.out.println("B.B()");
+    }
+
+    public B(int a)
+    {
+        this();
+        super(a); //error
+
+        System.out.println("B.B(int)");
     }
 }
-
 class A {
-    public void foo()
+    public A()
     {
-        System.out.println("A.foo");
+        System.out.println("A.A()");
     }
 
-    public void bar()
+    public A(int a)
     {
-        System.out.println("A.bar");
+        System.out.println("A.A(int)");
     }
 }
-
-
