@@ -39,8 +39,6 @@ public class DateTime {
         return new DateTime(Date.ofRandom(r, minYear, maxYear), Time.ofRandom(r));
     }
 
-    //...
-
     public DateTime()
     {
         m_date = new Date();
@@ -49,8 +47,22 @@ public class DateTime {
 
     public DateTime(Date date, Time time)
     {
-        m_date = new Date(date);
-        m_time = new Time(time);
+        this(date.getDay(), date.getMonth(), date.getYear(), time.getHour(), time.getMinute(), time.getSecond(), time.getMillisecond());
+    }
+
+    public DateTime(int day, Month month, int year)
+    {
+        this(day, month, year, 0, 0);
+    }
+
+    public DateTime(int day, Month month, int year, int hour, int minute)
+    {
+        this(day, month, year, hour, minute, 0);
+    }
+
+    public DateTime(int day, Month month, int year, int hour, int minute, int second)
+    {
+        this(day, month, year, hour, minute, second, 0);
     }
 
     public DateTime(int day, Month month, int year, int hour, int minute, int second, int millisecond)

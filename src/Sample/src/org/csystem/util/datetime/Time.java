@@ -99,8 +99,6 @@ public class Time {
         return new Time(r.nextInt(24), r.nextInt(60), r.nextInt(60), r.nextInt(1000));
     }
 
-    //...
-
     Time(Time time)
     {
        set(time.m_hour, time.m_minute, time.m_second, time.m_millisecond);
@@ -114,6 +112,16 @@ public class Time {
         m_minute = now.get(Calendar.MINUTE);
         m_second = now.get(Calendar.SECOND);
         m_millisecond = now.get(Calendar.MILLISECOND);
+    }
+
+    public Time(int hour, int minute)
+    {
+        this(hour, minute, 0);
+    }
+
+    public Time(int hour, int minute, int second)
+    {
+        this(hour, minute, second, 0);
     }
 
     public Time(int hour, int minute, int second, int millisecond)

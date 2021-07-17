@@ -9,7 +9,13 @@ import static java.lang.String.format;
 public class Point {
 	public int x;
 	public int y;
-	
+
+	Point(Point other)
+	{
+		x = other.x;
+		y = other.y;
+	}
+
 	public Point()
 	{		
 	}
