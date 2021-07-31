@@ -39,12 +39,10 @@ public class RandomObjectArrayGeneratorApp {
 
                 System.out.println(f.toString());
             }
-            else if (object instanceof IntValue) {
-                IntValue intValue = (IntValue)object;
+            else if (object instanceof Integer) {
+                int val = (int)object;
 
-                intValue = intValue.multiply(intValue);
-
-                System.out.println(intValue.toString());
+                System.out.println(val * val);
             }
             else if (object instanceof Random) {
                 Random r = (Random)object;
@@ -61,6 +59,22 @@ public class RandomObjectArrayGeneratorApp {
 
                 System.out.println(date.toLongDateStringTR());
             }
+            else if (object instanceof Double) {
+                double val = (double)object;
+
+                System.out.println(val);
+            }
+            else if (object instanceof Character) {
+                char ch = (char)object;
+
+                System.out.println(ch);
+            }
+            else if (object instanceof Boolean) {
+                boolean b = (boolean)object;
+
+                System.out.println(b);
+            }
+
             System.out.println("-----------------------------------------------");
         }
     }

@@ -1,15 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Yukarıdaki örnekte indeksler bulunduktan sonra sayıya çevirme işlemi Java 9 ile eklenen parseInt metoduyla çok daha
-    kolay bir biçimde yapılabilir.
+    RandomObjectArrayGeneratorApp uygulaması sanki her tür Object'ten türeilmniş gibi yazılmıştır. Şüphesiz temel
+    türler Object'ten türememiştir. Otomatik kutulama ve otomatik açma sayesinde yazılmıştır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.app.sample.devices.DevicesApp;
+import org.csystem.app.sample.randomgenerator.RandomObjectArrayGeneratorApp;
 
 class App {
     public static void main(String[] args)
     {
-        DevicesApp.run();
+        RandomObjectArrayGeneratorApp.run();
     }
 }
-
