@@ -7,7 +7,7 @@ import java.util.Random;
 
 import static java.lang.Character.*;
 
-public class StringUtil {
+public final class StringUtil {
 	private static final String ALPHABET_LOWER_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
 	private static final String ALPHABET_LOWER_EN = "abcdefghijklmnopqrstuvwxyz";
 	private static final String ALPHABET_ALL_TR = ALPHABET_LOWER_TR + "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";

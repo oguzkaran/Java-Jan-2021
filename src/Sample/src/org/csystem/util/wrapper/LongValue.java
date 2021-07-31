@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    IntValue sınıfı
+    LongValue sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.util.wrapper;
 
-public class LongValue {
+public final class LongValue {
     private static final int MIN_VALUE = -128;
     private static final int MAX_VALUE = 127;
     private static final int INDEX_PLUS_VALUE = -MIN_VALUE;
