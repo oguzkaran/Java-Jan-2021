@@ -31,9 +31,9 @@ public class BallFall {
 
     private void fillBall(int ballIndex, int end)
     {
-        fillSpace(0, ballIndex);
+        this.fillSpace(0, ballIndex);
         m_shape += '*';
-        fillSpace(ballIndex + 1, end);
+        this.fillSpace(ballIndex + 1, end);
     }
 
     public BallFall()

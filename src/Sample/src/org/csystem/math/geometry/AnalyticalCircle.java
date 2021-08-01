@@ -75,7 +75,7 @@ public class AnalyticalCircle extends Circle {
 
     public void offset(int dxy)
     {
-        offset(dxy, dxy);
+        this.offset(dxy, dxy);
     }
 
     public double centerDistance(AnalyticalCircle other)

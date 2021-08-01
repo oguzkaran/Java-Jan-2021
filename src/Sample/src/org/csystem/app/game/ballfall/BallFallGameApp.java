@@ -2,7 +2,7 @@ package org.csystem.app.game.ballfall;
 
 import java.util.Scanner;
 
-public class BallFallGameApp {
+public final class BallFallGameApp {
     private BallFallGameApp()
     {
     }

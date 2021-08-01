@@ -35,15 +35,15 @@ public class Complex {
 	{		
 	}
 	
-	public Complex(double a)
+	public Complex(double re)
 	{
-		re = a;
+		this.re = re;
 	}
 	
-	public Complex(double a, double b)
+	public Complex(double re, double im)
 	{
-		re = a;
-		im = b;
+		this.re = re;
+		this.im = im;
 	}	
 	
 	public double getLength()
@@ -53,7 +53,7 @@ public class Complex {
 	
 	public double getNorm()
 	{
-		return getLength();
+		return this.getLength();
 	}
 	
 	public Complex getConjugate()
@@ -128,7 +128,7 @@ public class Complex {
 	//offset methods	
 	public void offset(double dri)
 	{
-		offset(dri, dri);
+		this.offset(dri, dri);
 	}
 	
 	public void offset(double dr, double di)

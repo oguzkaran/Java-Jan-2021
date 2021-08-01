@@ -1,42 +1,25 @@
 /*----------------------------------------------------------------------------------------------------------------------
-
+    Bir sınıfın metotlarının aynı referans üzerinden zincir biçiminde aşağıdaki gibi çağrılabilmesi için implementasyonda
+    this referansı kullanılmalıdır (fluent)
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.wrapper.MutableIntValue;
 
 class App {
     public static void main(String[] args)
     {
-        Sample s;
+        MutableIntValue intValue = new MutableIntValue(10);
 
-        s = new Sample(); //rc1:1
+        intValue.add(3).multiply(2).subtract(4);
 
-        {
-            Sample k;
+        System.out.println(intValue.getVal());
 
-            k = s; //rc1:2
-            Mample.foo(s); //rc1:3 -> rc1:4
-            //rc1:3->rc1:2
-        } //rc1:1
-        s = new Sample(); //rc1:0 (garbage collected), rc2:1
+        int val = intValue.setVal(20).subtract(3).multiply(4).add(5).getVal();
+
         //...
+
+        System.out.println(val);
     }
 }
-
-class Mample {
-    public static void foo(Sample s)
-    {
-        Sample k;
-
-        //...
-
-        k = s;
-
-        //...
-    }
-}
-
-class Sample {
-    //...
-}
-
 

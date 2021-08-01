@@ -20,43 +20,42 @@ public class Point {
 	{		
 	}
 	
-	public Point(int a)
+	public Point(int x)
 	{
-		x = a;
+		this.x = x;
 	}
 	
-	public Point(int a, int b)
+	public Point(int x, int y)
 	{
-		x = a;
-		y = b;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public double distance()
 	{
-		return distance(0, 0);				
+		return this.distance(0, 0);
 	}
 	
 	public double distance(Point other)
 	{
-		return distance(other.x, other.y);
+		return this.distance(other.x, other.y);
 	}
 	
-	public double distance(int a, int b)
+	public double distance(int x, int y)
 	{
-		return sqrt((x - a) * (x - a) + (y - b) * (y - b));
+		return sqrt((this.x - x) * (this.x - x) + (this.y - y) * (this.y - y));
 	}
 	
 	public void offset(int dxy)
 	{
-		offset(dxy, dxy);
+		this.offset(dxy, dxy);
 	}
 	
 	public void offset(int dx, int dy)
 	{
 		x += dx;
 		y += dy;
-	}	
-	
+	}
 	
 	public String toString()
 	{

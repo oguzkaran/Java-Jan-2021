@@ -97,7 +97,7 @@ public class CommandPrompt {
 
         if (index != -1) {
             cmdInfo[0] = m_commands[index];
-            doWorkForCommand(cmdInfo);
+            this.doWorkForCommand(cmdInfo);
         }
         else
             System.out.println("Invalid command");
@@ -119,7 +119,7 @@ public class CommandPrompt {
                 lowerProc(cmdInfo);
                 break;
             case "chprom":
-                changePromptProc(cmdInfo);
+                this.changePromptProc(cmdInfo);
                 break;
             case "quit":
                 quitProc(cmdInfo);
@@ -138,7 +138,7 @@ public class CommandPrompt {
             System.out.print(m_prompt + ">");
             String cmdText = m_kb.nextLine().trim();
 
-            parseCommand(cmdText.split("[ \t]+"));
+            this.parseCommand(cmdText.split("[ \t]+"));
         }
     }
 }

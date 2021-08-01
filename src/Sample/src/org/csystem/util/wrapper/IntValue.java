@@ -43,17 +43,17 @@ public final class IntValue {
 
     public IntValue add(IntValue intValue)
     {
-        return add(intValue.m_value);
+        return this.add(intValue.m_value);
     }
 
     public IntValue subtract(int value)
     {
-        return add(-value);
+        return this.add(-value);
     }
 
     public IntValue subtract(IntValue intValue)
     {
-        return subtract(intValue.m_value);
+        return this.subtract(intValue.m_value);
     }
 
     public IntValue multiply(int value)
@@ -63,7 +63,7 @@ public final class IntValue {
 
     public IntValue multiply(IntValue intValue)
     {
-        return multiply(intValue.m_value);
+        return this.multiply(intValue.m_value);
     }
 
     public IntValue divide(int value)
@@ -73,17 +73,17 @@ public final class IntValue {
 
     public IntValue divide(IntValue intValue)
     {
-        return divide(intValue.m_value);
+        return this.divide(intValue.m_value);
     }
 
     public IntValue increment()
     {
-        return add(1);
+        return this.add(1);
     }
 
     public IntValue decrement()
     {
-        return subtract(1);
+        return this.subtract(1);
     }
 
     public int compareTo(IntValue other)

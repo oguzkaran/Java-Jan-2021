@@ -43,17 +43,17 @@ public final class LongValue {
 
     public LongValue add(LongValue intValue)
     {
-        return add(intValue.m_value);
+        return this.add(intValue.m_value);
     }
 
     public LongValue subtract(long value)
     {
-        return add(-value);
+        return this.add(-value);
     }
 
     public LongValue subtract(LongValue intValue)
     {
-        return subtract(intValue.m_value);
+        return this.subtract(intValue.m_value);
     }
 
     public LongValue multiply(long value)
@@ -63,7 +63,7 @@ public final class LongValue {
 
     public LongValue multiply(LongValue intValue)
     {
-        return multiply(intValue.m_value);
+        return this.multiply(intValue.m_value);
     }
 
     public LongValue divide(long value)
@@ -73,17 +73,17 @@ public final class LongValue {
 
     public LongValue divide(LongValue intValue)
     {
-        return divide(intValue.m_value);
+        return this.divide(intValue.m_value);
     }
 
     public LongValue increment()
     {
-        return add(1);
+        return this.add(1);
     }
 
     public LongValue decrement()
     {
-        return subtract(1);
+        return this.subtract(1);
     }
 
     public int compareTo(LongValue other)

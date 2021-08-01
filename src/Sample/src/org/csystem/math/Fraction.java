@@ -68,8 +68,8 @@ public class Fraction {
         }
         m_a = a;
         m_b = b;
-        setSign();
-        simplify();
+        this.setSign();
+        this.simplify();
     }
 
     public Fraction()
@@ -86,7 +86,7 @@ public class Fraction {
     public Fraction(int a, int b)
     {
         check(a, b);
-        set(a, b);
+        this.set(a, b);
     }
 
     public int getNumerator()
@@ -99,7 +99,7 @@ public class Fraction {
         if (m_a == val)
             return;
 
-        set(val, m_b);
+        this.set(val, m_b);
     }
 
     public int getDenominator()
@@ -113,7 +113,7 @@ public class Fraction {
             return;
 
         check(m_a, val);
-        set(m_a, val);
+        this.set(m_a, val);
     }
 
     public double getRealValue()
@@ -193,18 +193,18 @@ public class Fraction {
 
     public void increment()
     {
-        increment(1);
+        this.increment(1);
     }
 
     //decrement
     public void decrement(int val)
     {
-        increment(-val);
+        this.increment(-val);
     }
 
     public void decrement()
     {
-        decrement(1);
+        this.decrement(1);
     }
 
     public int compareTo(Fraction other)
@@ -214,6 +214,6 @@ public class Fraction {
 
     public String toString()
     {
-        return String.format("%d%s", m_a, m_b != 1 ? " / " + m_b + " = " + getRealValue() : "");
+        return String.format("%d%s", m_a, m_b != 1 ? " / " + m_b + " = " + this.getRealValue() : "");
     }
 }
