@@ -82,6 +82,19 @@ public final class ArrayUtil {
         bubbleSortAscending(a);
     }
 
+
+    public static int [] copyOf(int [] a, int newSize)
+    {
+        int [] r = new int[newSize];
+
+        int count = Math.min(a.length, newSize);
+
+        for (int i = 0; i < count; ++i)
+            r[i] = a[i];
+
+        return r;
+    }
+
     public static void display(int [] a)
     {
         display(1, a);
