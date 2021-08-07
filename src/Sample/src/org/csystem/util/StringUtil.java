@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.util;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static java.lang.Character.*;
@@ -223,6 +224,34 @@ public final class StringUtil {
 
 		return str.substring(0, str.length() - delimiter.length());
 	}
+
+
+	public static String join(ArrayList list, char delimiter)
+	{
+		return join(list, 0, delimiter + "");
+	}
+
+	public static String join(ArrayList list, String delimiter)
+	{
+		return join(list, 0, delimiter);
+	}
+
+	public static String join(ArrayList list, int startIndex, char delimiter)
+	{
+		return join(list, startIndex, delimiter + "");
+	}
+
+	public static String join(ArrayList list, int startIndex, String delimiter)
+	{
+		String str = "";
+
+		int size = list.size();
+		for (int i = startIndex; i < size; ++i)
+			str += (String)list.get(i) + delimiter;
+
+		return str.substring(0, str.length() - delimiter.length());
+	}
+
 
 	public static String padLeading(String s, int length, char ch)
 	{
