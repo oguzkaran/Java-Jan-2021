@@ -5,11 +5,14 @@ package org.csystem.app.sample.commandprompt;
 
 import org.csystem.util.StringUtil;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
+    private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "tget", "tjoin", "tclear",
+            "tprint", "quit"};
     private final Scanner m_kb = new Scanner(System.in);
+    private final ArrayList m_texts = new ArrayList();
     private String m_prompt;
 
     private static void lengthProc(String [] cmdInfo)
@@ -55,6 +58,57 @@ public class CommandPrompt {
 
         String args = StringUtil.join(cmdInfo, 1, ' ');
         System.out.printf("Lower with a space delimiter: %s%n", args.toLowerCase());
+    }
+
+    private void getTexts(String endText)
+    {
+        for (;;) {
+            System.out.printf("You can enter [%s] for end%n", endText);
+            System.out.print("Enter text:");
+            String text = m_kb.nextLine();
+
+            if (text.equals(endText))
+                break;
+
+            m_texts.add(text);
+        }
+    }
+
+    private void tgetProc(String [] cmdInfo)
+    {
+        if (cmdInfo.length != 2) {
+            System.out.println("tget command must have one argument");
+            return;
+        }
+
+        getTexts(cmdInfo[1]);
+    }
+
+    private void tjoinProc(String [] cmdInfo)
+    {
+        if (m_texts.isEmpty())
+            return;
+
+        String delimiter = cmdInfo.length == 1 ? " " : StringUtil.join(cmdInfo, 1, ' ');
+        String text = StringUtil.join(m_texts, delimiter);
+
+        System.out.println(text);
+    }
+
+    private void tclearProc(String [] cmdInfo)
+    {
+        m_texts.clear();
+    }
+
+    private void tprintProc(String [] cmdInfo)
+    {
+        if (cmdInfo.length != 1) {
+            System.out.println("tprint command can not have any argument");
+            return;
+        }
+
+        for (Object obj : m_texts)
+            System.out.println((String)obj);
     }
 
     private static void quitProc(String [] cmdInfo)
@@ -120,6 +174,18 @@ public class CommandPrompt {
                 break;
             case "chprom":
                 this.changePromptProc(cmdInfo);
+                break;
+            case "tget":
+                tgetProc(cmdInfo);
+                break;
+            case "tjoin":
+                tjoinProc(cmdInfo);
+                break;
+            case "tclear":
+                tclearProc(cmdInfo);
+                break;
+            case "tprint":
+                tprintProc(cmdInfo);
                 break;
             case "quit":
                 quitProc(cmdInfo);

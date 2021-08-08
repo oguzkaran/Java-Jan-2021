@@ -1,18 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
-
+    CSDArrayList
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import org.csystem.util.StringUtil;
+import org.csystem.util.collection.CSDArrayList;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 class App {
     public static void main(String[] args)
     {
-        Vector passwords = new Vector();
+        CSDArrayList passwords = new CSDArrayList();
         Random r = new Random();
         Scanner kb = new Scanner(System.in);
 
