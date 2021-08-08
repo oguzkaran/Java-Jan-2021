@@ -8,16 +8,21 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class Date {
-    private static final String [] DAYS_OF_WEEK_TR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
-    private static final String [] DAYS_OF_WEEK_EN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-    private static final String [] MONTHS_TR = {"",
-            "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
-    };
-    private static final String [] MONTHS_EN = {"",
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    };
-    private final static Month [] MONTHS = Month.values();
+    private static final String [] DAYS_OF_WEEK_TR;
+    private static final String [] DAYS_OF_WEEK_EN;
+    private static final String [] MONTHS_TR;
+    private static final String [] MONTHS_EN;
+    private final static Month [] MONTHS;
+
+    static {
+        DAYS_OF_WEEK_TR = new String[] {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+        DAYS_OF_WEEK_EN = new String[] {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        MONTHS_TR = new String[] {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos",
+                "Eylül", "Ekim", "Kasım", "Aralık"
+        };
+        MONTHS_EN = new String[] {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        MONTHS = Month.values();
+    }
 
     private int m_day;
     private int m_month;

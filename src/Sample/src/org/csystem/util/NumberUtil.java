@@ -6,8 +6,13 @@ package org.csystem.util;
 import static java.lang.Math.*;
 
 public final class NumberUtil {
-	private static final String [] ONES = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-	private static final String [] TENS = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	private static final String [] ONES;
+	private static final String [] TENS;
+
+	static {
+		ONES = new String[] {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+		TENS = new String[]{"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	}
 
 	private static int [] getDigits(long val, int p)
 	{
