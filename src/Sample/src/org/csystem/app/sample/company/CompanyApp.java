@@ -40,6 +40,22 @@ public class CompanyApp {
 
         return sm;
     }
+
+    private static ProjectWorker getProjectWorker()
+    {
+        ProjectWorker w = new ProjectWorker();
+
+        w.setCitizenId("12345678562");
+        w.setName("Ali");
+        w.setAddress("Şişli");
+        w.setFeePerHour(150);
+        w.setHourPerDay(6);
+        w.setProjectName("Whatsapp");
+        w.setExtra(1500);
+
+        return w;
+    }
+
     private CompanyApp()
     {
     }
@@ -50,9 +66,11 @@ public class CompanyApp {
         Manager m = getManager();
         Worker w = getWorker();
         SalesManager sm = getSalesManager();
+        ProjectWorker pw = getProjectWorker();
 
         humanResources.payInsurance(m);
         humanResources.payInsurance(w);
         humanResources.payInsurance(sm);
+        humanResources.payInsurance(pw);
     }
 }

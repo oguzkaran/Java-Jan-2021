@@ -39,5 +39,9 @@ public class Employee {
         m_address = address;
     }
 
+    public double calculateInsurancePayment()
+    {
+        return 0;
+    }
     //...
 }

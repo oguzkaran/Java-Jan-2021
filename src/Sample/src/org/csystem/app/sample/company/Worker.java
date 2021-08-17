@@ -27,4 +27,9 @@ public class Worker extends Employee {
         //...
         m_hourPerDay = hourPerDay;
     }
+
+    public double calculateInsurancePayment()
+    {
+        return m_feePerHour * m_hourPerDay * 30;
+    }
 }
