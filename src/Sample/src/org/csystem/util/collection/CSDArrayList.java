@@ -133,4 +133,18 @@ public class CSDArrayList {
         if (m_index != m_elems.length)
             changeCapacity(m_index);
     }
+
+    public String toString()
+    {
+        String str = "[";
+
+        for (int i = 0; i < m_index; ++i) {
+            if (str.length() != 1)
+                str += ", ";
+
+            str += m_elems[i];
+        }
+
+        return str + "]";
+    }
 }

@@ -254,7 +254,7 @@ public final class StringUtil {
 
 		int size = list.size();
 		for (int i = startIndex; i < size; ++i)
-			str += (String)list.get(i) + delimiter;
+			str += list.get(i) + delimiter;
 
 		return str.substring(0, str.length() - delimiter.length());
 	}
