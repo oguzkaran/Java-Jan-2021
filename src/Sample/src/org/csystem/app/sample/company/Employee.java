@@ -1,9 +1,10 @@
 package org.csystem.app.sample.company;
 
-public class Employee {
+public abstract class Employee {
     private String m_citizenId;
     private String m_name;
     private String m_address;
+
     //...
 
     public String getCitizenId()
@@ -39,9 +40,6 @@ public class Employee {
         m_address = address;
     }
 
-    public double calculateInsurancePayment()
-    {
-        return 0;
-    }
+    public abstract double calculateInsurancePayment();
     //...
 }

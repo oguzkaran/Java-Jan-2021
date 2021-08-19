@@ -1,13 +1,6 @@
 package org.csystem.app.sample.parser;
 
-public class Source {
-    public int nextChar()
-    {
-        return -1;
-    }
-
-    public void reset()
-    {
-
-    }
+public abstract class Source {
+    public abstract int nextChar();
+    public abstract void reset();
 }
