@@ -1,15 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    CompanyApp uygulaması
+    static ve abstract olan metot bildirimi geçersizdir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.app.sample.parser.ParserRandomSourceApp;
 
 class App {
     public static void main(String [] args)
     {
-        ParserRandomSourceApp.run();
+
     }
 }
-
 
