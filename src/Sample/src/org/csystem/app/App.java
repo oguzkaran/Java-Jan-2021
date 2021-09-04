@@ -1,53 +1,50 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Bir metodun fırlatabileceği checked exception sınıfları arasında türetme ilişkisi varsa throws listesine istenirse
-    yalnızca taban sınıf yazılabilir
+    IllegalArgumentException sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import org.csystem.util.console.Console;
 
+import java.util.Random;
+
 class App {
-    public static void main(String [] args)
+    public static void main(String[] args)
     {
-        try {
-            double val = Console.readDouble("Bir sayı giriniz:", "Hatalı giriş yaptınız:");
+        Random r = new Random();
 
-            double result = MathUtil.myLog(val);
+        int n = Console.readInt("Bir sayı giriniz:");
 
-            System.out.printf("log(%.2f) = %f%n", val, result);
+        for (int i = 0; i < n; ++i) {
+            try {
+                int count = Console.readInt("Dizinin eleman sayısını giriniz:");
+                int min = Console.readInt("Minimum değeri giriniz:");
+                int max = Console.readInt("Maximum değeri giriniz:");
+
+                int[] a = Util.getRandomArray(r, count, min, max);
+
+                for (int val : a)
+                    System.out.printf("%d ", val);
+
+                System.out.println("\n---------------------------");
+            }
+            catch (IllegalArgumentException ex) {
+                System.out.println("Geçersiz argüman(lar)");
+            }
         }
-        catch (Throwable ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        System.out.println("Tekrar yapıyor musunuz?");
     }
 }
 
-class MathUtil {
-    public static double myLog(double val) throws MathZeroException
+class Util {
+    public static int [] getRandomArray(Random r, int n, int min, int max)
     {
-        if (val == 0)
-            throw new MathZeroException("val can be zero");
+        if (r == null || n <= 0 || min >= max)
+            throw new IllegalArgumentException("Illegal Argument(s)");
 
-        if (val < 0)
-            throw new MathNegativeException("val can be zero");
+        int [] a = new int[n];
 
-        return Math.log(val);
-    }
-}
+        for (int i = 0; i < n; ++i)
+            a[i] = r.nextInt(max - min) + min;
 
-class MathZeroException extends Exception {
-    public MathZeroException(String message)
-    {
-        super(message);
-    }
-}
-
-
-class MathNegativeException extends MathZeroException {
-    public MathNegativeException(String message)
-    {
-        super(message);
+        return a;
     }
 }
