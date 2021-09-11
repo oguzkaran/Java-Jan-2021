@@ -1,50 +1,41 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    IllegalArgumentException sınıfı
+    Fraction sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
+import org.csystem.math.Fraction;
+import org.csystem.math.FractionException;
 import org.csystem.util.console.Console;
 
 import java.util.Random;
 
 class App {
-    public static void main(String[] args)
+    public static void main(String [] args)
     {
+        FractionTest.run();
+    }
+}
+
+class FractionTest {
+    public static void run()
+    {
+        Fraction f = new Fraction();
         Random r = new Random();
 
         int n = Console.readInt("Bir sayı giriniz:");
 
-        for (int i = 0; i < n; ++i) {
+        while (n-- > 0) {
             try {
-                int count = Console.readInt("Dizinin eleman sayısını giriniz:");
-                int min = Console.readInt("Minimum değeri giriniz:");
-                int max = Console.readInt("Maximum değeri giriniz:");
+                f.setNumerator(r.nextInt(11) - -5);
+                f.setDenominator(r.nextInt(11) - 5);
 
-                int[] a = Util.getRandomArray(r, count, min, max);
-
-                for (int val : a)
-                    System.out.printf("%d ", val);
-
-                System.out.println("\n---------------------------");
+                System.out.println(f);
+                System.out.println("---------------------------");
             }
-            catch (IllegalArgumentException ex) {
-                System.out.println("Geçersiz argüman(lar)");
+            catch (FractionException ex) {
+                System.out.println(ex.getMessage());
             }
         }
     }
 }
 
-class Util {
-    public static int [] getRandomArray(Random r, int n, int min, int max)
-    {
-        if (r == null || n <= 0 || min >= max)
-            throw new IllegalArgumentException("Illegal Argument(s)");
-
-        int [] a = new int[n];
-
-        for (int i = 0; i < n; ++i)
-            a[i] = r.nextInt(max - min) + min;
-
-        return a;
-    }
-}

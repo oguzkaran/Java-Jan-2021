@@ -96,8 +96,7 @@ public class Date {
 
     private static void doWorkForException(String messsage)
     {
-        System.out.println(messsage);
-        System.exit(1); //Exception işlemleri konusuna kadar sabredin
+        throw new DateTimeException(messsage);
     }
 
     private static void checkForDate(int day, int month, int year, String errMsg)
