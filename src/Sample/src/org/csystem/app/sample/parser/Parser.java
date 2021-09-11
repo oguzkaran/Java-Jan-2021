@@ -1,18 +1,18 @@
 package org.csystem.app.sample.parser;
 
 public class Parser {
-    private Source m_source;
+    private ISource m_source;
 
     public Parser()
     {
     }
 
-    public Parser(Source source)
+    public Parser(ISource source)
     {
         m_source = source;
     }
 
-    public void setSource(Source source)
+    public void setSource(ISource source)
     {
         m_source = source;
     }

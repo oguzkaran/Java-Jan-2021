@@ -17,11 +17,11 @@ public class RandomSourceFactory {
         m_random = random;
     }
 
-    public Source createSource()
+    public ISource createSource()
     {
         int val = m_random.nextInt(2);
 
-        Source source = null;
+        ISource source = null;
 
         String text = StringUtil.getRandomText(m_random, m_random.nextInt(11) + 5, "abcdxyzt0123456789 \t");
 

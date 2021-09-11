@@ -3,7 +3,6 @@ package org.csystem.app.sample.randomgenerator;
 import org.csystem.math.Fraction;
 import org.csystem.util.ArrayUtil;
 import org.csystem.util.datetime.Date;
-import org.csystem.util.wrapper.IntValue;
 
 import java.util.Random;
 import java.util.Scanner;
