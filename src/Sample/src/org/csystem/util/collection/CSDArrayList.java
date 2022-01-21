@@ -1,11 +1,20 @@
-/*----------------------------------------------------------------------------------------------------------------------
-    CSDArrayList sınıfı
-----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------
+	FILE        : CSDArrayList.java
+	AUTHOR      : Java-May-2021 Group
+	LAST UPDATE : 22.01.2022
+
+	CSDArrayList class that represents dynamic array
+
+	Note: String concatenation cost ignored for future implementations
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.util.collection;
 
-public class CSDArrayList {
+public class CSDArrayList<E> {
     private static final int DEFAULT_CAPACITY = 10;
-    private Object [] m_elems;
+    private E [] m_elems;
     private int m_index;
 
     private static void doWorkForIllegalArgumentException(String message)
@@ -13,7 +22,7 @@ public class CSDArrayList {
         throw new IllegalArgumentException(message);
     }
 
-    private static void doWorkForIndexOutOfBounds(String message)
+    private static void doWorkForIndexOutOfBoundsException(String message)
     {
         throw new IndexOutOfBoundsException(message);
     }
@@ -21,36 +30,35 @@ public class CSDArrayList {
     private static void checkCapacity(int capacity)
     {
         if (capacity < 0)
-            doWorkForIllegalArgumentException("Capacity value can not be negative");
+            doWorkForIllegalArgumentException("Capacity value can not be negative:" + capacity);
     }
 
     private void checkIndex(int index)
     {
         if (index < 0 || index >= m_index)
-            doWorkForIllegalArgumentException("Index out of bounds:" + index);
+            doWorkForIndexOutOfBoundsException("Index out of range:" + index);
     }
 
     private void changeCapacity(int capacity)
     {
-        Object [] temp = new Object[capacity];
+        E [] temp = (E[])new Object[capacity];
 
         System.arraycopy(m_elems, 0, temp, 0, m_index);
-
         m_elems = temp;
     }
 
     public CSDArrayList()
     {
-        m_elems = new Object[DEFAULT_CAPACITY];
+        m_elems = (E[])new Object[DEFAULT_CAPACITY];
     }
 
     public CSDArrayList(int initialCapacity)
     {
         checkCapacity(initialCapacity);
-        m_elems = new Object[initialCapacity];
+        m_elems = (E[])new Object[initialCapacity];
     }
 
-    public boolean add(Object elem)
+    public boolean add(E elem)
     {
         if (m_elems.length == m_index)
             changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
@@ -60,7 +68,7 @@ public class CSDArrayList {
         return true;
     }
 
-    public void add(int index, Object elem)
+    public void add(int index, E elem)
     {
         if (m_elems.length == m_index)
             changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
@@ -83,13 +91,11 @@ public class CSDArrayList {
 
     public void ensureCapacity(int minCapacity)
     {
-        if (minCapacity <= m_elems.length)
-            return;
-
-        changeCapacity(Math.max(m_elems.length * 2, minCapacity));
+        if (minCapacity > m_elems.length)
+            changeCapacity(Math.max(m_elems.length * 2, minCapacity));
     }
 
-    public Object get(int index)
+    public E get(int index)
     {
         checkIndex(index);
 
@@ -101,20 +107,21 @@ public class CSDArrayList {
         return m_index == 0;
     }
 
-    public Object remove(int index)
+    public E remove(int index)
     {
-        checkIndex(index);
-        Object oldElem = m_elems[index];
+        //...
+        E oldVal = m_elems[index];
 
         //TODO:
 
-        return oldElem;
+        return oldVal;
     }
 
-    public Object set(int index, Object elem)
+    public E set(int index, E elem)
     {
         checkIndex(index);
-        Object oldElem = m_elems[index];
+
+        E oldElem = m_elems[index];
 
         m_elems[index] = elem;
 
@@ -145,4 +152,5 @@ public class CSDArrayList {
 
         return str + "]";
     }
+
 }

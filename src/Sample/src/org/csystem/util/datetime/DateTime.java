@@ -1,6 +1,13 @@
-/*----------------------------------------------------------------------------------------------------------------------
-    DateTime sınıfı
-----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------
+	FILE        : DateTime.java
+	AUTHOR      : Java-May-2021 Group
+	LAST UPDATE : 06.11.2021
+
+	DateTime class for date and time operations
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.util.datetime;
 
 import java.util.Random;
@@ -9,34 +16,34 @@ public class DateTime {
     private final Date m_date;
     private final Time m_time;
 
-    public static DateTime ofRandom()
+    public static DateTime random()
     {
-        return ofRandom(new Random());
+        return random(new Random(), new Date().getYear());
     }
 
-    public static DateTime ofRandom(Random r)
+    public static DateTime random(Random r)
     {
-        return new DateTime(Date.ofRandom(r), Time.ofRandom(r));
+        return random(r, new Date().getYear());
     }
 
-    public static DateTime ofRandom(int year)
+    public static DateTime random(int year)
     {
-        return ofRandom(new Random(), year);
+        return random(new Random(), year, year);
     }
 
-    public static DateTime ofRandom(Random r, int year)
+    public static DateTime random(Random r, int year)
     {
-        return ofRandom(r, year, year);
+        return random(r, year, year);
     }
 
-    public static DateTime ofRandom(int minYear, int maxYear)
+    public static DateTime random(int minYear, int maxYear)
     {
-        return ofRandom(new Random(), minYear, maxYear);
+        return random(new Random(), minYear, maxYear);
     }
 
-    public static DateTime ofRandom(Random r, int minYear, int maxYear)
+    public static DateTime random(Random r, int minYear, int maxYear)
     {
-        return new DateTime(Date.ofRandom(r, minYear, maxYear), Time.ofRandom(r));
+        return new DateTime(Date.random(r, minYear, maxYear), Time.random(r));
     }
 
     public DateTime()
@@ -54,6 +61,7 @@ public class DateTime {
     {
         this(day, month, year, 0, 0);
     }
+
 
     public DateTime(int day, Month month, int year, int hour, int minute)
     {
@@ -126,6 +134,11 @@ public class DateTime {
         return m_date.getDayOfWeekEN();
     }
 
+    public boolean isLeapYear()
+    {
+        return m_date.isLeapYear();
+    }
+
     public boolean isWeekend()
     {
         return m_date.isWeekend();
@@ -136,89 +149,14 @@ public class DateTime {
         return m_date.isWeekday();
     }
 
-    public boolean isLeapYear()
+    public int getDaysOfMonth()
     {
-        return m_date.isLeapYear();
+        return m_date.getDaysOfMonth();
     }
 
-    public int getHour()
+    public String toString(char delimiter)
     {
-        return m_time.getHour();
-    }
-
-    public void setHour(int hour)
-    {
-        m_time.setHour(hour);
-    }
-
-    public int getMinute()
-    {
-        return m_time.getMinute();
-    }
-
-    public void setMinute(int minute)
-    {
-        m_time.setMinute(minute);
-    }
-
-    public int getSecond()
-    {
-        return m_time.getSecond();
-    }
-
-    public void setSecond(int second)
-    {
-        m_time.setSecond(second);
-    }
-
-    public int getMillisecond()
-    {
-        return m_time.getMillisecond();
-    }
-
-    public void setMillisecond(int millisecond)
-    {
-        m_time.setMillisecond(millisecond);
-    }
-
-    public Date toDate()
-    {
-        return new Date(m_date);
-    }
-
-    public Time toTime()
-    {
-        return new Time(m_time);
-    }
-
-    public String toDateString()
-    {
-        return m_date.toString();
-    }
-
-    public String toTimeString()
-    {
-        return m_time.toString();
-    }
-
-    public String toStringTR()
-    {
-        return String.format("%s %s", m_date.toStringTR(), m_time.toString());
-    }
-
-    public String toStringEN()
-    {
-        return String.format("%s %s", m_date.toStringEN(), m_time.toString());
-    }
-
-    public String toLongDateTimeStringTR()
-    {
-        return String.format("%s %s", m_date.toLongDateStringTR(), m_time.toLongTimeString());
-    }
-
-    public String toLongDateTimeStringEN()
-    {
-        return String.format("%s %s", m_date.toLongDateStringEN(), m_time.toLongTimeString());
+        return m_date.toString(delimiter);
     }
 
     public String toLongDateStringTR()
@@ -231,6 +169,56 @@ public class DateTime {
         return m_date.toLongDateStringEN();
     }
 
+    public String toShortDateStringTR()
+    {
+        return m_date.toShortDateStringTR();
+    }
+
+    public String toShortDateStringEN()
+    {
+        return m_date.toShortDateStringEN();
+    }
+
+    public int getHour()
+    {
+        return m_time.getHour();
+    }
+
+    public void setHour(int val)
+    {
+        m_time.setHour(val);
+    }
+
+    public int getMinute()
+    {
+        return m_time.getMinute();
+    }
+
+    public void setMinute(int val)
+    {
+        m_time.setMinute(val);
+    }
+
+    public int getSecond()
+    {
+        return m_time.getSecond();
+    }
+
+    public void setSecond(int val)
+    {
+        m_time.setSecond(val);
+    }
+
+    public int getMillisecond()
+    {
+        return m_time.getMillisecond();
+    }
+
+    public void setMillisecond(int val)
+    {
+        m_time.setMillisecond(val);
+    }
+
     public String toShortTimeString()
     {
         return m_time.toShortTimeString();
@@ -241,8 +229,28 @@ public class DateTime {
         return m_time.toLongTimeString();
     }
 
+    public String toLongDateTimeStringTR()
+    {
+        return String.format("%s %s", m_date.toLongDateStringTR(), m_time.toLongTimeString());
+    }
+
+    public String toLongDateTimeStringEN()
+    {
+        return String.format("%s %s", m_date.toLongDateStringEN(), m_time.toLongTimeString());
+    }
+
     public String toString()
     {
         return String.format("%s %s", m_date.toString(), m_time.toString());
+    }
+
+    public String toStringTR()
+    {
+        return String.format("%s %s", m_date.toShortDateStringTR(), m_time.toString());
+    }
+
+    public String toStringEN()
+    {
+        return String.format("%s %s", m_date.toShortDateStringEN(), m_time.toString());
     }
 }

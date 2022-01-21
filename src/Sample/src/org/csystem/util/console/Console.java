@@ -1,16 +1,25 @@
-/*----------------------------------------------------------------------------------------------------------------------
-    Console sınıfı
-----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------
+	FILE        : StringUtil.java
+	AUTHOR      : Java-May-2021 Group
+	LAST UPDATE : 08.01.2022
+
+	Console class that is used for standard input and output operations
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.util.console;
 
 import java.util.Scanner;
 
 public final class Console {
-    private static final Scanner KB = new Scanner(System.in);
+    private static final Scanner ms_kb;
 
-    private Console()
-    {
+    static {
+        ms_kb = new Scanner(System.in);
     }
+    private Console()
+    {}
 
     public static int readInt()
     {
@@ -27,7 +36,7 @@ public final class Console {
         for (;;) {
             try {
                 System.out.print(message);
-                return Integer.parseInt(KB.nextLine());
+                return Integer.parseInt(ms_kb.nextLine());
             }
             catch (NumberFormatException ignore) {
                 System.out.print(errMessage);
@@ -37,15 +46,13 @@ public final class Console {
 
     public static int readIntLine(String message)
     {
-        return readInt(message + '\n', "");
+        return readInt(message + '\n');
     }
 
     public static int readIntLine(String message, String errMessage)
     {
         return readInt(message + '\n', errMessage + '\n');
     }
-
-    //...
 
     public static double readDouble()
     {
@@ -62,7 +69,7 @@ public final class Console {
         for (;;) {
             try {
                 System.out.print(message);
-                return Double.parseDouble(KB.nextLine());
+                return Double.parseDouble(ms_kb.nextLine());
             }
             catch (NumberFormatException ignore) {
                 System.out.print(errMessage);
@@ -72,23 +79,24 @@ public final class Console {
 
     public static double readDoubleLine(String message)
     {
-        return readDouble(message + '\n');
+        return readInt(message + '\n');
     }
 
     public static double readDoubleLine(String message, String errMessage)
     {
-        return readDouble(message + '\n', errMessage + '\n');
-    }
-
-    public static String readLine(String message)
-    {
-        return read(message + '\n');
+        return readInt(message + '\n', errMessage + '\n');
     }
 
     public static String read(String message)
     {
         System.out.print(message);
-
-        return KB.nextLine();
+        return ms_kb.nextLine();
     }
+
+    public static String readLine()
+    {
+        return ms_kb.nextLine();
+    }
+
+    //...
 }
